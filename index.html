@@ -993,6 +993,16 @@ function apBookItem(b) {
   const badge = b.badge === 'Required'
     ? `<span class="ap-book-badge">${b.badge}</span>`
     : '';
+  const links = [
+    { label:'Roseland Library', system:'roseland' },
+    { label:'Fairfield Library', system:'fairfield' },
+    { label:'Caldwell Library', system:'caldwell' },
+    { label:'Sora', system:'sora' },
+  ].map(({label, system}) =>
+    `<a class="catalog-link" href="${catalogUrl(system, b.t)}" target="_blank" rel="noopener">
+      ${label}&nbsp;${EXT}
+    </a>`
+  ).join('');
   return `<div class="ap-book-item">
     <div class="ap-book-cover" id="${pid}">
       <div style="width:100%;height:100%;background:var(--surface2);border-radius:3px"></div>
@@ -1002,6 +1012,7 @@ function apBookItem(b) {
       <div class="ap-book-author">${b.a}</div>
       ${badge}
       <p class="ap-book-desc">${b.d}</p>
+      <div class="catalog-links" style="margin-top:10px">${links}</div>
     </div>
   </div>`;
 }
