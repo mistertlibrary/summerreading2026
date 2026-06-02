@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="West Essex High School Board of Education approved summer reading lists for grades 9–12 and AP English courses, 2026.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WEHS Summer Reading 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* === Reset === */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+/* === Variables === */
+:root {
+  --accent:       #C41E3A;
+  --accent-mid:   #a01830;
+  --accent-dim:   rgba(196, 30, 58, 0.13);
+  --serif:        'Cormorant Garamond', Georgia, serif;
+  --sans:         'Inter', system-ui, sans-serif;
+  --radius:       5px;
+  --card-w:       144px;
+  --card-h:       214px;
+  --focus-ring:   3px solid var(--accent);
+  --focus-offset: 2px;
+}
+
+/* Dark theme (default) */
+:root,
+:root[data-theme="dark"] {
+  --bg:          #111111;
+  --surface:     #1c1c1c;
+  --surface2:    #262626;
+  --border:      #3a3a3a;
+  --text:        #f8f6f2;
+  --text-muted:  #c4bdb4;
+  --text-dim:    #5a5550;
+  --nav-bg:      rgba(17,17,17,.96);
+  --modal-bg:    #1e1e1e;
+  --shadow:      0 20px 48px rgba(0,0,0,.75);
+  --logo-filter: drop-shadow(0 0 16px rgba(196,30,58,.2));
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast overrides */
+@media (prefers-contrast: more) {
+  :root { --text-muted: #ddd8d0; --border: #606060; }
+  }
+
+/* === Focus === */
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+  border-radius: 3px;
+}
+
+/* === Skip link === */
+.skip-link {
+  position: absolute; top: -100px; left: 8px;
+  background: var(--accent); color: #fff;
+  padding: 10px 16px; border-radius: 4px;
+  font-family: var(--sans); font-size: 14px; font-weight: 600;
+  text-decoration: none; z-index: 9999;
+  transition: top .15s;
+}
+.skip-link:focus { top: 8px; }
+
+/* === Screen reader only === */
+.sr-only {
+  position: absolute !important; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+/* === Body === */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color .3s, color .3s;
+}
+
+
+
+/* === Hero === */
+.hero {
+  position: relative; padding: 64px 56px 48px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: flex-start; gap: 48px; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 55% 70% at 5% 80%, rgba(196,30,58,.08) 0%, transparent 65%),
+    radial-gradient(ellipse 30% 40% at 90% 10%, rgba(196,30,58,.03) 0%, transparent 55%);
+}
+.hero-logo {
+  flex-shrink: 0; width: 120px; height: 120px;
+  position: relative; z-index: 1; opacity: .92;
+  filter: var(--logo-filter);
+  transition: filter .3s;
+}
+.hero-logo img {
+  width: 100%; height: 100%; object-fit: contain;
+  display: block;
+}
+.hero-text { position: relative; z-index: 1; flex: 1; }
+.hero-title {
+  font-family: var(--serif);
+  font-size: clamp(42px, 5.5vw, 72px);
+  font-weight: 500; line-height: 1.08;
+  color: var(--text); max-width: 640px; margin-bottom: 4px;
+}
+.hero-rule { width: 48px; height: 1px; background: var(--accent); margin: 24px 0 20px; opacity: .7; }
+.hero-desc {
+  font-size: 15px; color: var(--text-muted);
+  max-width: 540px; line-height: 1.85; margin-bottom: 12px;
+}
+.hero-prompt {
+  font-size: 14px; color: var(--text-muted);
+  max-width: 560px; line-height: 1.85; margin-bottom: 24px;
+  padding: 14px 18px;
+  background: var(--surface); border-left: 2px solid rgba(196,30,58,.35);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+/* === Sticky nav === */
+.grade-nav {
+  position: sticky; top: 0; z-index: 200;
+  background: var(--nav-bg); backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 56px; display: flex; align-items: stretch;
+  overflow-x: auto; scrollbar-width: none;
+  transition: background-color .3s;
+}
+.grade-nav::-webkit-scrollbar { display: none; }
+.nav-tab {
+  flex-shrink: 0; font-family: var(--sans);
+  font-size: 14px; font-weight: 500;
+  color: var(--text-muted); background: none; border: none;
+  border-bottom: 2px solid transparent;
+  padding: 15px 18px 13px; cursor: pointer;
+  transition: color .18s, border-color .18s; white-space: nowrap;
+  min-height: 44px;
+}
+.nav-tab:hover { color: var(--text); }
+.nav-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* === Grade section === */
+.grade-section { padding: 56px 0 8px; }
+.grade-header {
+  display: flex; align-items: center;
+  gap: 16px; padding: 0 56px; margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.grade-name {
+  font-family: var(--serif); font-size: 32px;
+  font-weight: 500; color: var(--text); flex: 1;
+  min-width: 180px;
+}
+.grade-pdf-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--sans); font-size: 12px; font-weight: 500;
+  color: var(--text-muted); background: var(--surface);
+  border: 1px solid var(--border); border-radius: 100px;
+  padding: 6px 14px; text-decoration: none; white-space: nowrap;
+  transition: color .15s, border-color .15s, background-color .15s;
+  min-height: 34px;
+}
+.grade-pdf-link:hover { color: var(--accent); border-color: rgba(196,30,58,.4); background: var(--accent-dim); }
+
+/* === Book row === */
+.book-row { margin-bottom: 40px; position: relative; }
+.row-header {
+  display: flex; align-items: center;
+  gap: 12px; padding: 0 56px; margin-bottom: 14px;
+}
+.row-label {
+  font-size: 11px; font-weight: 600; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--text-muted);
+}
+.row-count { font-size: 12px; color: var(--text-dim); }
+.row-line { flex: 1; height: 1px; background: var(--border); max-width: 80px; }
+
+/* === Scroll track + fade affordance === */
+.scroll-wrap { position: relative; }
+.scroll-wrap::after {
+  content: ''; position: absolute; top: 0; right: 0;
+  width: 80px; height: 100%;
+  background: linear-gradient(to left, #111111 0%, transparent 100%);
+  pointer-events: none; z-index: 2;
+  transition: opacity .2s;
+}
+.scroll-wrap.at-end::after { opacity: 0; }
+.scroll-track {
+  display: flex; gap: 10px;
+  padding: 6px 56px 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.scroll-track::-webkit-scrollbar { height: 3px; }
+.scroll-track::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+/* === Book card === */
+.book-card {
+  flex-shrink: 0; width: var(--card-w); height: var(--card-h);
+  border-radius: var(--radius); overflow: hidden; cursor: pointer;
+  position: relative; background: var(--surface2);
+  scroll-snap-align: start;
+  transition: transform .22s ease, box-shadow .22s ease;
+  display: flex; flex-direction: column;
+}
+.book-card:hover {
+  transform: scale(1.07) translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,.65), 0 0 0 1px rgba(196,30,58,.3);
+  z-index: 5;
+}
+.book-card img {
+  width: 100%; height: 100%; object-fit: cover;
+  display: block; position: absolute; inset: 0;
+}
+.cover-placeholder {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 14px 10px; text-align: center;
+  background: linear-gradient(160deg, var(--surface) 0%, var(--surface2) 100%);
+  gap: 8px; position: relative; z-index: 1;
+}
+.cover-placeholder .pt {
+  font-family: var(--serif); font-style: italic;
+  font-size: 14px; color: #c8c0b6; line-height: 1.35;
+}
+.cover-placeholder .pr { width: 18px; height: 1px; background: var(--border); }
+.cover-placeholder .pa {
+  font-size: 12px; color: var(--text-dim); letter-spacing: .02em;
+}
+
+/* Card genre tag */
+.card-genre {
+  position: absolute; bottom: 0; left: 0; right: 0; z-index: 3;
+  background: rgba(0,0,0,.72);
+  backdrop-filter: blur(4px);
+  padding: 5px 8px;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: rgba(255,252,248,.88);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  line-height: 1.3;
+}
+
+/* === Section divider === */
+.section-divider {
+  height: 1px; background: var(--border);
+  margin: 12px 56px 0; opacity: .6;
+}
+
+/* === Modal === */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.82); backdrop-filter: blur(10px);
+  z-index: 1000; display: flex; align-items: center;
+  justify-content: center; padding: 20px;
+  opacity: 0; pointer-events: none; transition: opacity .22s;
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal-panel {
+  background: var(--modal-bg); border: 1px solid var(--border);
+  border-radius: 10px; max-width: 680px; width: 100%;
+  max-height: 88vh; overflow-y: auto; position: relative;
+  transform: translateY(14px) scale(.98); transition: transform .25s;
+  scrollbar-width: thin; scrollbar-color: var(--border) transparent;
+}
+.modal-overlay.open .modal-panel { transform: translateY(0) scale(1); }
+.modal-body { display: flex; align-items: stretch; }
+.modal-cover-wrap {
+  width: 185px; min-width: 185px; min-height: 280px;
+  background: var(--surface2); border-radius: 10px 0 0 0;
+  overflow: hidden; flex-shrink: 0;
+}
+.modal-cover-wrap img {
+  width: 100%; height: 100%; object-fit: cover;
+  display: block; min-height: 280px;
+}
+.modal-cover-wrap .cover-placeholder { min-height: 280px; }
+.modal-cover-wrap .cover-placeholder .pt { font-size: 15px; }
+.modal-info { padding: 28px 28px 0; flex: 1; display: flex; flex-direction: column; }
+.modal-title {
+  font-family: var(--serif); font-size: 27px; font-weight: 500;
+  line-height: 1.18; color: var(--text); margin-bottom: 6px;
+}
+.modal-author { font-size: 15px; color: var(--text-muted); margin-bottom: 14px; }
+.modal-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.tag {
+  font-size: 12px; padding: 4px 11px; border-radius: 100px;
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--text-muted);
+}
+.modal-desc {
+  font-size: 16px; color: var(--text-muted);
+  line-height: 1.85; padding-bottom: 22px; flex: 1;
+}
+.modal-find { border-top: 1px solid var(--border); padding: 18px 28px 24px; }
+.find-label {
+  font-size: 11px; font-weight: 600; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--text-dim); margin-bottom: 12px;
+}
+.catalog-links { display: flex; flex-wrap: wrap; gap: 8px; }
+.catalog-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--sans); font-size: 14px; font-weight: 500;
+  color: var(--text-muted); background: var(--surface);
+  border: 1px solid var(--border); border-radius: 5px;
+  padding: 10px 14px; text-decoration: none;
+  transition: all .15s; white-space: nowrap; min-height: 40px;
+}
+.catalog-btn:hover { background: var(--accent-dim); border-color: rgba(196,30,58,.4); color: var(--accent); }
+.modal-close {
+  position: absolute; top: 8px; right: 8px;
+  width: 44px; height: 44px;
+  background: transparent; border: none;
+  color: var(--text-muted); font-size: 16px;
+  cursor: pointer; display: flex; align-items: center;
+  justify-content: center; border-radius: 50%;
+  transition: background-color .15s, color .15s; z-index: 10;
+}
+.modal-close:hover { background: var(--surface2); color: var(--text); }
+
+/* === AP section === */
+.ap-section { padding: 56px 0 60px; }
+.ap-header { padding: 0 56px; margin-bottom: 8px; }
+.ap-name { font-family: var(--serif); font-size: 32px; font-weight: 500; color: var(--text); }
+.ap-intro {
+  margin: 12px 56px 28px; font-size: 15px; color: var(--text-muted);
+  max-width: 600px; line-height: 1.75;
+}
+.ap-card {
+  margin: 0 56px 20px; padding: 26px 30px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); max-width: 720px;
+}
+.ap-card-title {
+  font-family: var(--serif); font-size: 19px; font-weight: 500;
+  color: var(--text); margin-bottom: 8px;
+}
+.ap-teacher { font-size: 14px; color: var(--text-muted); font-family: var(--sans); font-weight: 400; }
+.ap-card-note { font-size: 15px; color: var(--text-muted); line-height: 1.75; margin-bottom: 16px; }
+.ap-ext-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 500; color: var(--accent);
+  text-decoration: none; border-bottom: 1px solid transparent;
+  transition: border-color .18s;
+}
+.ap-ext-link:hover { border-bottom-color: var(--accent); }
+.ap-book-group { margin-top: 18px; }
+.ap-group-label {
+  font-size: 10px; font-weight: 600; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--text-dim); margin-bottom: 10px;
+}
+.ap-book-item {
+  display: flex; align-items: flex-start; gap: 16px;
+  padding: 14px 0; border-bottom: 1px solid var(--border);
+}
+.ap-book-item:last-child { border-bottom: none; }
+.ap-book-cover {
+  width: 52px; height: 76px; border-radius: 3px;
+  overflow: hidden; flex-shrink: 0; background: var(--surface2);
+}
+.ap-book-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ap-book-text { flex: 1; min-width: 0; }
+.ap-book-title { font-family: var(--serif); font-size: 16px; font-weight: 500; color: var(--text); line-height: 1.3; }
+.ap-book-author { font-size: 13px; color: var(--text-muted); margin-top: 3px; margin-bottom: 6px; }
+.ap-book-desc { font-size: 13px; color: var(--text-muted); line-height: 1.75; }
+.ap-book-badge {
+  font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--accent); background: var(--accent-dim);
+  padding: 2px 8px; border-radius: 3px; margin-top: 4px; display: inline-block;
+}
+
+/* === Filter bar (per grade) === */
+.filter-bar {
+  display: flex; align-items: center; gap: 10px;
+  padding: 0 56px; margin-bottom: 28px; flex-wrap: wrap;
+}
+.filter-wrap {
+  position: relative; flex: 1; max-width: 320px;
+}
+.filter-icon {
+  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+  color: var(--text-dim); pointer-events: none;
+}
+.grade-filter {
+  width: 100%; background: var(--surface);
+  border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 9px 12px 9px 36px;
+  font-family: var(--sans); font-size: 14px; color: var(--text);
+  outline: none; transition: border-color .18s;
+  -webkit-appearance: none;
+}
+.grade-filter:focus { border-color: rgba(196,30,58,.45); }
+.grade-filter::placeholder { color: var(--text-dim); }
+.grade-random-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--sans); font-size: 13px; font-weight: 500;
+  color: var(--text-muted); background: var(--surface);
+  border: 1px solid var(--border); border-radius: 100px;
+  padding: 8px 16px; cursor: pointer; white-space: nowrap;
+  transition: color .15s, border-color .15s, background-color .15s;
+  min-height: 38px;
+}
+.grade-random-btn:hover { color: var(--accent); border-color: rgba(196,30,58,.4); background: var(--accent-dim); }
+.grade-random-btn:active { transform: scale(.96); }
+.grade-random-btn.rolling { animation: roll .35s ease; }
+@keyframes roll {
+  0%   { transform: rotate(0deg) scale(1); }
+  40%  { transform: rotate(18deg) scale(1.06); }
+  75%  { transform: rotate(-8deg) scale(1.03); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+/* Hide rows where all cards are filtered out */
+.book-row.all-hidden { display: none; }
+.book-card.sr-hidden { display: none; }
+
+/* No-match message */
+.no-match-msg {
+  padding: 6px 56px 24px;
+  font-size: 14px; color: var(--text-dim); font-style: italic;
+}
+
+/* === Responsive === */
+@media (max-width: 700px) {
+  :root { --card-w: 130px; --card-h: 193px; }
+  body { font-size: 17px; }
+  .hero { flex-direction: column; gap: 20px; padding: 40px 20px 36px; }
+  .hero-logo { width: 80px; height: 80px; }
+  .grade-nav { padding: 0 16px; }
+  .grade-header { padding: 0 20px; }
+  .row-header { padding-left: 20px; padding-right: 20px; }
+  .scroll-track { padding-left: 20px; padding-right: 20px; }
+  .scroll-wrap::after { width: 48px; }
+  .ap-card, .ap-header, .ap-intro { padding-left: 20px; padding-right: 20px; margin-left: 0; margin-right: 0; }
+  .section-divider { margin-left: 20px; margin-right: 20px; }
+  .filter-bar { padding: 0 20px; }
+  .no-match-msg { padding-left: 20px; padding-right: 20px; }
+  .ap-book-cover { width: 44px; height: 64px; }
+  .modal-body { flex-direction: column; }
+  .modal-cover-wrap { width: 100%; min-height: 220px; border-radius: 10px 10px 0 0; }
+  .modal-cover-wrap img { min-height: 220px; }
+  .modal-cover-wrap .cover-placeholder { min-height: 220px; }
+  .modal-info { padding: 20px 20px 0; }
+  .modal-find { padding: 16px 20px 20px; }
+}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to book lists</a>
+
+<!-- ============================================================ HERO -->
+<header class="hero">
+  <div class="hero-logo">
+    <img src="data:image/jpeg;base64,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" alt="West Essex High School Library Media Center">
+  </div>
+  <div class="hero-text">
+    <h1 class="hero-title">Summer Reading 2026</h1>
+    <div class="hero-rule"></div>
+    <p class="hero-desc">All students must read one book — fiction or nonfiction — from their grade-level list. Students enrolled in AP English courses must follow the requirements specified in their course packet. Many titles are available via Sora; search local library catalogs below each title.</p>
+    <p class="hero-prompt">Read with a purpose. Consider how the protagonist's journey — or the author's argument — illuminates broader societal questions, and what the challenges faced, moral dilemmas encountered, and transformative moments reveal.</p>
+  </div>
+</header>
+
+<!-- ============================================================ NAV -->
+<nav class="grade-nav" id="gradeNav" role="navigation" aria-label="Grade navigation">
+  <button class="nav-tab active" data-target="grade9" aria-current="page">9th Grade</button>
+  <button class="nav-tab" data-target="grade10">10th Grade</button>
+  <button class="nav-tab" data-target="grade11">11th Grade</button>
+  <button class="nav-tab" data-target="grade12">12th Grade</button>
+  <button class="nav-tab" data-target="ap">AP Courses</button>
+</nav>
+
+<!-- ============================================================ MAIN -->
+<main id="main" tabindex="-1"></main>
+
+<!-- Live region for screen reader announcements -->
+<div id="srAnnounce" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+
+<!-- ============================================================ MODAL -->
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="modal-panel" id="modalPanel">
+    <button class="modal-close" id="modalClose" aria-label="Close">&#x2715;</button>
+    <div class="modal-body">
+      <div class="modal-cover-wrap" id="modalCoverWrap"></div>
+      <div class="modal-info">
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <p class="modal-author" id="modalAuthor"></p>
+        <div class="modal-tags" id="modalTags"></div>
+        <p class="modal-desc" id="modalDesc"></p>
+      </div>
+    </div>
+    <div class="modal-find">
+      <p class="find-label">Find this book</p>
+      <div class="catalog-links" id="catalogLinks"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ SCRIPT -->
+<script>
+/* ------------------------------------------------------------------ data */
+// shorthand: t=title, a=author, isbn, g=genres[], d=description
+const BOOKS = {
+  grade9: {
+    label:"Incoming 9th Grade", downloadUrl:"https://docs.google.com/document/d/1FqlPOv7N4TTA2d1tOC7JAhPaOjAp-RROmbGN6y_-1iM/edit?usp=sharing",
+    pdfUrl:"summer_reading_2026_grade9.pdf",
+    fiction:[
+      {t:"Divine Rivals",a:"Rebecca Ross",isbn:"9781250857439",g:["Fantasy","Steampunk"],d:"When two young rival journalists find love through a magical connection, they must face the depths of hell—in a war among gods—to seal their fate forever."},
+      {t:"Ruthless Vows",a:"Rebecca Ross",isbn:"9781250857453",g:["Fantasy","Steampunk"],d:"Two weeks after returning from the front, Iris and Attie seize another chance to report on Dacre's movements, while Roman—who has lost his memory—becomes entangled in a pen pal correspondence with pivotal consequences."},
+      {t:"The Reappearance of Rachel Price",a:"Holly Jackson",isbn:"9780593374207",g:["Thriller","Suspense"],d:"When her mother, who disappeared 16 years ago, reappears during the filming of a true crime documentary, 18-year-old Bel refuses to believe the story she has been given and sets out to find the real truth."},
+      {t:"Sunrise on the Reaping",a:"Suzanne Collins",isbn:"9781546171461",g:["Dystopia","Science Fiction"],d:"Set during the 50th Hunger Games, this prequel follows Haymitch Abernathy as his name is called for the Quarter Quell—where twice as many tributes are taken—and something in him refuses to go quietly."},
+      {t:"Absalom's Daughters",a:"Suzanne Feldman",isbn:"9781627794534",g:["Historical Fiction","Coming of Age"],d:"Two half-sisters—one brown-skinned and self-educated, the other white and illiterate—drive through the Jim Crow South of the 1950s to claim an inheritance from their wayward father."},
+      {t:"After the Shot Drops",a:"Randy Ribay",isbn:"9781328702272",g:["Realistic Fiction","Sports"],d:"Told in alternating perspectives, Bunny takes a basketball scholarship to an elite private school, leaving behind his best friend Nasir in their tough Philadelphia neighborhood—and testing a bond they assumed was unbreakable."},
+      {t:"Another Brooklyn",a:"Jacqueline Woodson",isbn:"9781432840129",g:["Historical Fiction","Coming of Age"],d:"A chance encounter sends August's memory spiraling back to the 1970s Brooklyn of her girlhood, where four girls believed they were beautiful and destined—until the world proved more dangerous than they had imagined."},
+      {t:"Black Enough",a:"Ibi Zoboi (ed.)",isbn:"9780062698728",g:["Short Stories","Coming of Age"],d:"Seventeen stories by leading Black YA writers—including Jason Reynolds, Nic Stone, and Renée Watson—explore the varied, vibrant, and sometimes contradictory experiences of being Black in America today."},
+      {t:"The Book of Aron",a:"Jim Shepard",isbn:"9781101874318",g:["Historical Fiction","Holocaust"],d:"Aron, a misfit boy in the Warsaw Ghetto, risks his life smuggling contraband to keep his family alive—until he is taken in by the beloved children's advocate Janusz Korczak, who cannot protect him from what is coming."},
+      {t:"Fahrenheit 451",a:"Ray Bradbury",isbn:"9781451673319",g:["Classic","Dystopia"],d:"In a future where firemen burn books rather than save them, Guy Montag begins to question the world around him—and discovers that ideas, once ignited, are impossible to extinguish."},
+      {t:"Fallen Angels",a:"Walter Dean Myers",isbn:"9780545055765",g:["Historical Fiction","War"],d:"Perry, a Harlem teenager who enlists after his college dreams collapse, confronts the horror of Vietnam while questioning why Black troops are assigned the most dangerous missions."},
+      {t:"Firsts and Lasts",a:"Laura Silverman (ed.)",isbn:"9780593523087",g:["Short Stories","Coming of Age"],d:"An anthology celebrating the new experiences and final moments teenagers face on their journey into adulthood, told across a range of voices and genres."},
+      {t:"Swagger",a:"Carl Deuker",isbn:"9780547974590",g:["Sports Fiction","Coming of Age"],d:"When Jonas befriends soft-spoken basketball player Levi, he slowly uncovers a troubling secret about their charismatic coach—and must decide whether speaking up is worth the cost to his own future."},
+      {t:"Today Tonight Tomorrow",a:"Rachel Lynn Solomon",isbn:"9781534440241",g:["Realistic Fiction","Romance"],d:"Bitter rivals Rowan and Neil team up for a senior scavenger hunt through Seattle—and discover that the person they've spent four years hating might be exactly who they've been looking for."},
+      {t:"Unbroken",a:"Marieke Nijkamp (ed.)",isbn:"9780374306502",g:["Short Stories","Disability"],d:"An anthology written by and about disabled characters, exploring first loves, friendship, war, and more across past, present, and future settings."},
+      {t:"The Way You Make Me Feel",a:"Maurene Goo",isbn:"9780374304089",g:["Realistic Fiction","Romance"],d:"When prankster Clara Shin is sentenced to a summer on her dad's Korean-Brazilian food truck with uptight classmate Rose, she discovers that her assumptions about nearly everyone—including herself—were wrong."},
+      {t:"We Are Not Free",a:"Traci Chee",isbn:"9780358131434",g:["Historical Fiction","Japanese American"],d:"Told through fourteen voices from a close-knit Japanese American community in southern California, this novel follows the shattering upheaval of forced incarceration in the wake of Pearl Harbor."},
+      {t:"When I Was the Greatest",a:"Jason Reynolds",isbn:"9781442459472",g:["Realistic Fiction","Urban"],d:"In Bed-Stuy, New York, a small misunderstanding can put a price on your head—even when you're living clean. A gritty, triumphant debut about heart and hardship."},
+      {t:"With the Fire on High",a:"Elizabeth Acevedo",isbn:"9780062662835",g:["Coming of Age","Food Fiction"],d:"Teen mother Emoni Santiago balances raising her daughter and caring for her grandmother while pursuing a culinary gift she has been told is not worth chasing."},
+      {t:"World War Z",a:"Max Brooks",isbn:"9780307346612",g:["Horror","Satire","Epistolary"],d:"Assembled as oral history after the fact, this mosaic of survivor testimonies chronicles humanity's decade-long struggle against a global zombie pandemic—and the failures that made it possible."},
+      {t:"You Should See Me in a Crown",a:"Leah Johnson",isbn:"9781338503265",g:["Realistic Fiction","LGBTQ","Romance"],d:"When her music scholarship falls through, Liz Lighty must enter her school's prom royalty race as her only path to college funding—and finds herself unexpectedly falling for her competition."}
+    ],
+    nonfiction:[
+      {t:"Everything Is Tuberculosis",a:"John Green",isbn:"9780525556572",g:["Narrative Nonfiction","Public Health"],d:"John Green traces the scientific and social history of tuberculosis through his friendship with Henry Reider, a young patient in Sierra Leone—arguing that a curable, preventable disease still kills over a million people each year because of choices we make as a society."},
+      {t:"Accused!",a:"Larry Dane Brimner",isbn:"9781629797755",g:["History","Civil Rights"],d:"Nine Black teenagers falsely accused of rape in 1931 Alabama spent years facing racist courts and all-white juries in one of the worst miscarriages of justice in American history."},
+      {t:"Almost American Girl",a:"Robin Ha",isbn:"9780062685100",g:["Graphic Memoir","Immigration"],d:"When Robin Ha's mother moves them from Seoul to Alabama to remarry, Robin finds herself isolated and adrift—until a comic-drawing class opens a door she never knew existed."},
+      {t:"Americanized: Rebel Without a Green Card",a:"Sara Saedi",isbn:"9781524717827",g:["Memoir","Immigration","Identity"],d:"Sara Saedi was thirteen when she learned she had been undocumented since her family fled Iran when she was two—and somehow had to manage the fear of deportation alongside the ordinary terror of high school."},
+      {t:"Bomb",a:"Steve Sheinkin",isbn:"9781596434875",g:["History","WWII","Science"],d:"A propulsive narrative of the race between countries, spies, and scientists to create the first atomic bomb—a story of extraordinary ingenuity and catastrophic consequence."},
+      {t:"Breakfast with Einstein",a:"Chad Orzel",isbn:"9781946885357",g:["Science","Quantum Physics"],d:"Every ordinary morning—the alarm, the toast, the coffee—depends on phenomena from the strangest corners of physics. Orzel makes quantum mechanics tangible by finding it in the routines of daily life."},
+      {t:"The Color of Water",a:"James McBride",isbn:"9781594481925",g:["Memoir","Race","Family"],d:"James McBride retraces the extraordinary life of his white Jewish mother, who raised twelve Black children in the Red Hook projects and refused, for decades, to explain herself or her origins."},
+      {t:"The Freedom Summer Murders",a:"Don Mitchell",isbn:"9780545477253",g:["History","Civil Rights"],d:"The full story of the 1964 murders of James Chaney, Andrew Goodman, and Michael Schwerner—three civil rights workers lynched in Mississippi—and the four decades it took for justice to arrive."},
+      {t:"Games of Deception",a:"Andrew Maraniss",isbn:"9780525514633",g:["History","Sports","Nazi Germany"],d:"The true story of the first U.S. Olympic basketball team, who sailed to Berlin in 1936 without fully understanding the propaganda spectacle they were entering—or the atrocities the festive facade concealed."},
+      {t:"The Glass Castle",a:"Jeannette Walls",isbn:"9780743247542",g:["Memoir","Family","Coming of Age"],d:"Jeannette Walls grew up with an alcoholic father whose brilliant, restless mind was inseparable from his recklessness, and a mother who believed her own freedom mattered more than her children's stability."}
+    ]
+  },
+  grade10: {
+    label:"Incoming 10th Grade", downloadUrl:null, pdfUrl:"summer_reading_2026_grade10.pdf",
+    fiction:[
+      {t:"What the River Knows",a:"Isabel Ibañez",isbn:"9781250803375",g:["Historical Fantasy","Adventure"],d:"Inez Olivera, of Bolivian and Argentine descent, sets off for 1880s Cairo to learn what happened to her globe-trotting parents—and finds, in a mysterious guardian-archaeologist and a strange inherited ring, more than she bargained for."},
+      {t:"Where the Library Hides",a:"Isabel Ibañez",isbn:"9781250822994",g:["Historical Fantasy","Adventure","Romance"],d:"After the heart-stopping end of What the River Knows, Inez fights to stay in Egypt and find answers—accepting an enigmatic marriage proposal to secure her independence, even as new betrayals threaten to undo everything."},
+      {t:"All My Rage",a:"Sabaa Tahir",isbn:"9780593202340",g:["Realistic Fiction","Family"],d:"A Pakistani American family in the Mojave Desert—young love, old regrets, and the long shadow of generations—rendered in Sabaa Tahir's lyrical, unsparing voice."},
+      {t:"Almond",a:"Won-Pyung Sohn",isbn:"9780062961372",g:["Realistic Fiction","Diverse Abilities"],d:"Yunjae was born unable to feel fear or anger—his life a careful arrangement of Post-it note reminders about when to smile. When a volatile teenager enters his world, something slowly begins to change inside him."},
+      {t:"The Black Flamingo",a:"Dean Atta",isbn:"9780062990297",g:["Verse Novel","LGBTQ+","Coming of Age"],d:"A novel in verse following Michael, mixed-race and gay in London, as he navigates what it means to be Black enough, Greek enough, Jamaican enough—until he discovers drag and, with it, himself."},
+      {t:"Children of Blood and Bone",a:"Tomi Adeyemi",isbn:"9781250170972",g:["High Fantasy","Africa-Inspired"],d:"After magic vanishes from Orïsha, Zélie has one chance to bring it back and strike against the monarchy that killed her mother—pursued by a crown prince hell-bent on ensuring magic never returns."},
+      {t:"Djinn Patrol on the Purple Line",a:"Deepa Anappara",isbn:"9780593129197",g:["Mystery","Thriller"],d:"Nine-year-old Jai, armed with the crime-solving skills he's learned from TV, leads his friends on a search for missing children in their Delhi neighborhood—until what began as a game turns dark."},
+      {t:"The Fountains of Silence",a:"Ruta Sepetys",isbn:"9780399160318",g:["Historical Fiction","Spain"],d:"Madrid, 1957: beneath the festive surface of Franco's Spain, an American oil heir and a young Spanish woman begin to uncover the regime's darkest secrets—at great personal cost."},
+      {t:"Fruit of the Drunken Tree",a:"Ingrid Rojas Contreras",isbn:"9780385542722",g:["Historical Fiction","Colombia"],d:"In Bogotá during the height of Pablo Escobar's power, a wealthy child's fascination with the family's mysterious new maid sets in motion a story of danger, secrets, and a friendship that crosses impossible divides."},
+      {t:"Furia",a:"Yamile Saied Méndez",isbn:"9781616209919",g:["Realistic Fiction","Sports"],d:"Camila Hassan is La Furia on the soccer field—unstoppable, electric—but her parents don't know she plays. When her team qualifies for a South American tournament, she must decide how much she's willing to risk for the game she loves."},
+      {t:"A Girl Like That",a:"Tanaz Bhathena",isbn:"9780374305444",g:["Realistic Fiction","Saudi Arabia"],d:"The aftermath of a car crash on a Jeddah highway unspools the story of Zarin Wadia—troublemaker, romantic, misfit—and the boy who loved her, pieced together through multiple perspectives."},
+      {t:"Guantanamo Boy",a:"Anna Perera",isbn:"9780807530788",g:["Realistic Fiction","Criminal Justice"],d:"Khalid, a fifteen-year-old British Muslim, is abducted from Pakistan and taken to Guantanamo Bay—held without charge, denied his childhood, as he struggles to understand what is happening to him."},
+      {t:"The Henna Wars",a:"Adiba Jaigirdar",isbn:"9781624149689",g:["LGBTQ Fiction","Romance"],d:"Nishat, Bangladeshi and newly out to a disapproving family, develops a crush on Flávia—who becomes her rival in a school business competition where both claim henna artistry as their niche."},
+      {t:"Here the Whole Time",a:"Vítor Martins",isbn:"9781338620825",g:["LGBTQ Fiction","Romance","Brazil"],d:"Felipe has had a crush on his neighbor Caio forever. When Caio ends up staying in Felipe's apartment for fifteen days over winter break, the walls Felipe has built around his body image and his heart begin, slowly, to come down."},
+      {t:"The Hitchhiker's Guide to the Galaxy",a:"Douglas Adams",isbn:"9781400052929",g:["Science Fiction","Comedy"],d:"Seconds before Earth is demolished for a galactic freeway, Arthur Dent is rescued by his alien friend Ford Prefect—and the two embark on an absurdist odyssey across a universe that makes less and less sense."},
+      {t:"Homegoing",a:"Yaa Gyasi",isbn:"9781101947135",g:["Historical Fiction","West Africa"],d:"Two half-sisters, born in 18th-century Ghana, diverge onto separate paths—one into an English marriage above a slave dungeon, the other onto a ship bound for American slavery. Their descendants' stories unspool across three centuries."},
+      {t:"How It All Blew Up",a:"Arvin Ahmadi",isbn:"9780593202876",g:["Realistic Fiction","LGBTQ"],d:"Eighteen-year-old Amir, facing a failed relationship, bullies, and blackmail, flees to Rome—where new friends and unexpected romances begin to reshape who he is, until his old life comes knocking."},
+      {t:"How You Grow Wings",a:"Rimma Onoseta",isbn:"9781643753775",g:["Realistic Fiction","Nigeria","Sisters"],d:"Living with her wealthy aunt in Nigeria while her sister Cheta struggles under harsher circumstances, Zam finds that her sister's fate—and her own complicity in it—rests in her hands."},
+      {t:"I'll Be the One",a:"Lyla Lee",isbn:"9780062936929",g:["Realistic Fiction","Music"],d:"Skye Shin dreams of becoming the world's first plus-sized K-pop star, and she's auditioning for a reality competition to prove it—despite fat-phobic standards, sudden fame, and an unexpected rival she can't stop noticing."},
+      {t:"I Must Betray You",a:"Ruta Sepetys",isbn:"9781984836038",g:["Historical Fiction","Romania"],d:"Romania, 1989: seventeen-year-old Cristian Florescu is blackmailed by the secret police into becoming an informer. He faces a choice between betraying everyone he loves and using his position to subvert one of Europe's most ruthless dictatorships."},
+      {t:"Interpreter of Maladies",a:"Jhumpa Lahiri",isbn:"9780358213260",g:["Short Stories","India"],d:"Stories of Indians and Indian Americans navigating the distances between nations, generations, and the selves they left behind—rendered in Lahiri's precise, quietly devastating prose."},
+      {t:"In the Time of the Butterflies",a:"Julia Alvarez",isbn:"1565120388",g:["Historical Fiction","Dominican Republic"],d:"The lives of the Mirabal sisters, who became known as Las Mariposas—Butterflies—in their resistance against Trujillo's dictatorship, told from the perspective of the one sister who survived."},
+      {t:"The Island of Sea Women",a:"Lisa See",isbn:"9781501154850",g:["Historical Fiction","Korea"],d:"Spanning decades of Korean history from Japanese colonialism through the modern era, this novel follows two childhood friends in Jeju's all-female diving collective whose bond is tested by war and forces beyond their control."},
+      {t:"The Lines We Cross",a:"Randa Abdel-Fattah",isbn:"9781338118667",g:["Realistic Fiction","Immigration"],d:"When a Muslim Afghan refugee enrolls at his school, Michael—whose parents lead an anti-immigrant group—finds that their politics are suddenly much harder to defend."},
+      {t:"The Love and Lies of Rukhsana Ali",a:"Sabina Khan",isbn:"9781338227017",g:["Realistic Fiction","LGBTQ"],d:"When her conservative Muslim parents discover she has been hiding a girlfriend, seventeen-year-old Rukhsana is taken to Bangladesh—where her grandmother's old diary gives her the courage to fight for her own future."},
+      {t:"Magic Has No Borders",a:"Olivia Chadha et al.",isbn:"9780063208261",g:["Short Stories","Fantasy","South Asian Folklore"],d:"Award-winning South Asian authors reimagine legends, folklore, and epics for a modern audience in this breathtaking anthology, proving that magic crosses every border."},
+      {t:"Mexican WhiteBoy",a:"Matt de la Peña",isbn:"9780440239383",g:["Realistic Fiction","Coming of Age","Sports"],d:"Half-Mexican Danny, spending the summer with his father's family in San Diego, channels his pain into a devastating fastball—and finds in baseball a path toward the questions of identity he has been unable to answer."},
+      {t:"Patron Saints of Nothing",a:"Randy Ribay",isbn:"9780525554912",g:["Realistic Fiction","Mystery"],d:"After his Filipino cousin is killed in Duterte's drug war and no one will explain what happened, Jay Reguero travels to the Philippines to find the truth—and to confront his own role in it."},
+      {t:"People of the Book",a:"Geraldine Brooks",isbn:"9780143115007",g:["Historical Fiction","Judaism","Art"],d:"An Australian rare-book conservator finds tiny artifacts hidden in a fifteenth-century Sarajevo Haggadah; each fragment leads back through centuries of the book's secret, imperiled history."},
+      {t:"Strangers",a:"David A. Robertson",isbn:"9781553796763",g:["Mystery","Thriller","Indigenous Fiction"],d:"When Cole Harper returns to Wounded Sky First Nation after a decade away, he finds his community in chaos: a series of murders, a mysterious illness, and unanswered questions about the tragedy that first drove him out."},
+      {t:"A Thousand Beginnings and Endings",a:"Ellen Oh & Elsie Chapman (eds.)",isbn:"9780062671158",g:["Short Stories","Fantasy","Asian Folklore"],d:"Fifteen authors of East and South Asian descent reimagine mythology and folklore from their heritages in stories spanning fantasy, science fiction, romance, and revenge."},
+      {t:"A Thousand Splendid Suns",a:"Khaled Hosseini",isbn:"9781594483851",g:["Realistic Fiction","Afghanistan"],d:"Born a generation apart under very different circumstances, Mariam and Laila are brought together by war and loss in Kabul—and form a bond across their differences that will alter the course of both their lives."},
+      {t:"Under the Udala Trees",a:"Chinelo Okparanta",isbn:"9780544003446",g:["Historical Fiction","Nigeria","LGBTQ"],d:"Coming of age amid the Nigerian Civil War, Ijeoma falls in love with another displaced girl—and spends decades navigating the cost of hiding who she is in a country that criminalizes her existence."}
+    ],
+    nonfiction:[
+      {t:"The Best We Could Do",a:"Thi Bui",isbn:"9781419718786",g:["Graphic Memoir","Vietnam","Immigration"],d:"As a new mother herself, Thi Bui retraces her family's daring escape from Vietnam after the fall of Saigon—examining what it costs to leave a country and what it means to belong somewhere new."},
+      {t:"Born a Crime",a:"Trevor Noah",isbn:"9780399588174",g:["Memoir","South Africa","Apartheid"],d:"Trevor Noah was born to a white Swiss father and a Black Xhosa mother at a time when such a union was punishable by five years in prison. His story is his mother's story, and a portrait of a country dismantling its own cruelty."},
+      {t:"Butterfly",a:"Yusra Mardini",isbn:"9781250184405",g:["Memoir","Syria","Sports"],d:"When the engine of her refugee boat died in the sea between Turkey and Greece, Yusra Mardini dove in and pushed. Within months she was training for the 2016 Olympics as a member of the Refugee Olympic Team."},
+      {t:"Chinese Cinderella",a:"Adeline Yen Mah",isbn:"9780385740074",g:["Memoir","China","Family"],d:"Considered bad luck by her family after her mother died giving her life, Adeline Yen Mah grew up unwanted in her own home—and found in school the one arena where excellence could not be ignored."},
+      {t:"The Closer",a:"Mariano Rivera",isbn:"9780316404600",g:["Memoir","Baseball","Faith"],d:"The nineteen-year Yankees veteran reflects on his journey from Panama, his Christian faith, and what it meant to be a Latino player navigating professional baseball in America."},
+      {t:"The Distance Between Us",a:"Reyna Grande",isbn:"9781451661781",g:["Memoir","Mexico","Immigration"],d:"After her parents crossed the border in pursuit of the American dream, Reyna Grande and her siblings were left behind—and she eventually made her own crossing toward a father she barely knew."},
+      {t:"Family Style",a:"Thien Pham",isbn:"9781250809728",g:["Graphic Memoir","Vietnam","Food"],d:"Told through the lens of food and the meals that mark its seasons, this graphic memoir traces the author's immigration from Vietnam to America and the long search for belonging that followed."},
+      {t:"The Good Girl's Guide to Getting Lost",a:"Rachel Friedman",isbn:"9780385343374",g:["Memoir","Travel","Coming of Age"],d:"On a whim, a newly graduated honors student buys a ticket to Ireland—and over a year on three continents, discovers that the self she had been performing was only one of many possible lives."},
+      {t:"How Dare the Sun Rise",a:"Sandra Uwiringiyimana",isbn:"9780062470140",g:["Memoir","Congo","Immigration"],d:"At ten years old, Sandra survived a rebel massacre that killed her mother and little sister. Her memoir follows her family's path from refugee camps to New York City, and her fight to give voice to what she witnessed."},
+      {t:"How Far the Light Reaches",a:"Sabina Imbler",isbn:"9780316540537",g:["Essays","Marine Biology","Identity"],d:"Pairing vivid portraits of deep-sea creatures with candid accounts of growing up mixed-race and queer, Imbler finds in the ocean's darkest corners a language for survival, belonging, and self-invention."},
+      {t:"I Am Malala",a:"Malala Yousafzai",isbn:"9780316322423",g:["Memoir","Pakistan","Education"],d:"Shot in the head by the Taliban at fifteen for speaking out about girls' right to education, Malala Yousafzai survived to become a global symbol and the youngest Nobel Peace Prize nominee in history."},
+      {t:"Impossible Escape",a:"Steve Sheinkin",isbn:"9781250265722",g:["Narrative Nonfiction","Holocaust","WWII"],d:"Two gripping parallel true stories: Rudolph Vrba, the first prisoner to escape Auschwitz and expose the death camp to the world, and Gerta, his high school friend who was slowly breaking under Nazi pressure at home."},
+      {t:"No One Wins Alone",a:"Mark Messier",isbn:"9781982158569",g:["Memoir","Hockey","Leadership"],d:"Mark Messier traces his path from a tight-knit family in Alberta through dynasty years with the Edmonton Oilers to the storied 1994 championship run with the New York Rangers—and the teammates who made it possible."},
+      {t:"Once Upon a Time in Russia",a:"Ben Mezrich",isbn:"9781476771892",g:["Narrative Nonfiction","Russia","Business"],d:"The true story of Boris Berezovsky and Roman Abramovich—two oligarchs who built empires in the chaos following the Soviet collapse—told with the pacing of a thriller and leading to murder, exile, and billions of dollars."},
+      {t:"The Race to Be Myself",a:"Caster Semenya",isbn:"9781324035770",g:["Memoir","Track","Identity"],d:"Two-time Olympic gold medalist Caster Semenya reflects on her career and her fight to compete after being forced to take hormone-altering drugs because of her naturally high testosterone—a battle that reshaped international athletics."},
+      {t:"Red Card",a:"Ken Bensinger",isbn:"9781501133916",g:["Narrative Nonfiction","Soccer","Corruption"],d:"How American investigators quietly began untangling one of the largest corruption scandals in sports history—following the money through FIFA officials, World Cup bids, and decades of brazen fraud on the world's most popular stage."},
+      {t:"Taking Flight",a:"Michaela DePrince",isbn:"9780385755146",g:["Memoir","Ballet","Adoption"],d:"Orphaned in Sierra Leone and taunted as a devil child for a skin condition, Michaela DePrince discovered a picture of a ballerina at age four—and pursued that image all the way to the Dance Theatre of Harlem."},
+      {t:"Unstoppable",a:"Maria Sharapova",isbn:"9780374279790",g:["Memoir","Tennis","Russia"],d:"Sharapova recounts how her father arrived at a Florida tennis academy in the middle of the night with his six-year-old daughter, seven hundred dollars, and an absolute conviction—and how she earned everything that followed."},
+      {t:"Vesper Flights",a:"Helen Macdonald",isbn:"9780802128812",g:["Essays","Nature","Environment"],d:"A collection of essays on wildlife, migration, and the strange consolations of paying close attention to the world beyond human scale—from swifts over the Empire State Building to the last golden orioles in Suffolk."},
+      {t:"Without You, There Is No Us",a:"Suki Kim",isbn:"9780307720665",g:["Narrative Nonfiction","North Korea","Education"],d:"Undercover as a missionary teacher at Pyongyang University of Science and Technology during the final months of Kim Jong-il's reign, Suki Kim documented a sealed world where her students sang his praises three times a day."},
+      {t:"Yes, Chef",a:"Marcus Samuelsson",isbn:"9780385342612",g:["Memoir","Food","Ethiopia"],d:"The Ethiopian-born, Swedish-raised chef traces his path from his grandmother's kitchen to a New York Times three-star rating at twenty-four, and ultimately to Red Rooster in Harlem—his love letter to every place that made him."}
+    ]
+  },
+  grade11: {
+    label:"Incoming 11th Grade", downloadUrl:"https://docs.google.com/document/d/1p_jZZga_MxfgUqjCZv2z15W8JFHe_XdyMEAyeB77rXE/edit?usp=sharing", pdfUrl:"summer_reading_2026_grade11.pdf",
+    fiction:[
+      {t:"American Dirt",a:"Jeanine Cummins",isbn:"9781250209764",g:["Realistic Fiction","Immigration","Mexico"],d:"When a cartel massacre destroys her life in Acapulco, Lydia Pérez and her eight-year-old son flee north on la bestia—the freight trains—toward the only border the cartel cannot cross."},
+      {t:"American Street",a:"Ibi Zoboi",isbn:"9780062473042",g:["Realistic Fiction","Immigration","Haiti"],d:"When Fabiola Toussaint arrives in Detroit from Haiti to find her mother detained by immigration, she must navigate an unfamiliar city, a loud extended family, and a neighborhood where loyalty can cost everything."},
+      {t:"Armada",a:"Ernest Cline",isbn:"9780804137270",g:["Science Fiction","Gaming"],d:"Zack Lightman has spent years mastering a space-combat video game—until he realizes the alien ships in the game are not fictional, and the skills he has honed are exactly what Earth needs."},
+      {t:"Bodega Dreams",a:"Ernesto Quiñonez",isbn:"9780375705892",g:["Realistic Fiction","Coming of Age","Urban"],d:"Growing up in Spanish Harlem, Chino navigates loyalty and survival with his childhood friend Sapo—until his path crosses that of a charismatic neighborhood visionary whose dreams come at a cost."},
+      {t:"Bone Gap",a:"Laura Ruby",isbn:"9780062317605",g:["Fantasy","Mystery"],d:"When beautiful Roza goes missing from the small town of Bone Gap, only Finn knows what happened—but he cannot describe the man who took her, a face he somehow cannot hold in his mind."},
+      {t:"The Boyfriend Wish",a:"Swati Teerdhala",isbn:"9780063279155",g:["Romance","Contemporary"],d:"When her grandmother gifts her a jasmine flower, Deepa Josyula wishes for her dream boyfriend—and finds herself questioning whether magic can give her what she actually needs."},
+      {t:"Camino Winds",a:"John Grisham",isbn:"9780385545938",g:["Mystery","Thriller"],d:"After a hurricane devastates a Florida island, bookseller Bruce Cable discovers that a friend's death amid the storm was no accident—and begins to investigate while the infrastructure around him lies in ruins."},
+      {t:"Challenger Deep",a:"Neal Shusterman",isbn:"9780061134111",g:["Realistic Fiction","Mental Health"],d:"As he struggles with schizophrenia, a teenage boy inhabits two realities at once: his ordinary suburban life and a voyage to the deepest place on Earth, where the captain and crew hold his fate."},
+      {t:"Every Last Word",a:"Tamara Ireland Stone",isbn:"9781484705278",g:["Realistic Fiction","Mental Health","Romance"],d:"Consumed by the intrusive thoughts of Purely-Obsessional OCD, a girl discovers a secret poetry club—and begins to understand that being seen is not the same as being destroyed."},
+      {t:"Far from the Tree",a:"Robin Benway",isbn:"9780062330628",g:["Realistic Fiction","Adoption","Family"],d:"National Book Award winner. After placing her own baby for adoption, Grace goes looking for her biological family—and finds a younger sister and an older brother, each carrying their own version of the same unresolved question."},
+      {t:"Felix Ever After",a:"Kacen Callender",isbn:"9780062820259",g:["Realistic Fiction","LGBTQ","Coming of Age"],d:"Felix Love has never been in love—and fears he may be too many marginalizations at once to deserve it. When an anonymous bully posts his deadname online, his plan for revenge pulls him into something more complicated."},
+      {t:"Forgive Me, Leonard Peacock",a:"Matthew Quick",isbn:"9780316221337",g:["Realistic Fiction","Mental Health"],d:"On his eighteenth birthday, Leonard Peacock says goodbye to the four people who matter most to him. A taut, compassionate novel about a day when everything hangs on whether anyone is paying attention."},
+      {t:"For the Win",a:"Cory Doctorow",isbn:"9780765322166",g:["Science Fiction","Gaming","Labor"],d:"In MMORPGs across the developing world, young gold-farmers work in digital sweatshops—until a loose alliance of players begins to organize, and the game's economy threatens to become a revolution."},
+      {t:"Frankly in Love",a:"David Yoon",isbn:"9781984812209",g:["Realistic Fiction","Romance","Korean American"],d:"Frank Li strikes a fake-dating deal to keep his traditional Korean parents from objecting to his real relationship—and discovers that what he thought he wanted was not what he needed."},
+      {t:"The Gentleman's Guide to Vice and Virtue",a:"Mackenzi Lee",isbn:"9780062382801",g:["Historical Fiction","Adventure","LGBTQ"],d:"Henry Montague, dissolute English nobleman, sets off on a Grand Tour of Europe with his best friend Percy—and ends up in the middle of an alchemical conspiracy that none of them expected."},
+      {t:"The Henna Artist",a:"Alka Joshi",isbn:"9780778309451",g:["Historical Fiction","India"],d:"Having fled an abusive marriage, Lakshmi builds a careful, independent life in 1950s Jaipur as the city's most sought-after henna artist—until her husband reappears with a young girl she never knew existed."},
+      {t:"Hungry Hearts",a:"Elsie Chapman & Caroline Tung Richmond (eds.)",isbn:"9781534421851",g:["Short Stories","Food","Immigration"],d:"Thirteen interconnected stories in which food goes beyond nourishment—carrying love, grief, memory, and culture across the lives of teen characters from diverse immigrant communities."},
+      {t:"I Am Not Your Perfect Mexican Daughter",a:"Erika L. Sánchez",isbn:"9781524700492",g:["Realistic Fiction","Grief","Latinx"],d:"After her seemingly perfect older sister dies in a Chicago street accident, Julia must hold her shattered family together while uncovering secrets suggesting her sister was never what anyone thought."},
+      {t:"It Ends with Us",a:"Colleen Hoover",isbn:"9781501110368",g:["Contemporary Fiction","Domestic Abuse"],d:"Lily builds what looks like a perfect life with neurosurgeon Ryle Kincaid—until the relationship turns abusive and she must choose her future while reconnecting with a figure from her past."},
+      {t:"Legendborn",a:"Tracy Deonn",isbn:"9781534441606",g:["Fantasy","Arthurian"],d:"After her mother dies, sixteen-year-old Bree enrolls in a UNC residential program, witnesses a magical attack, and discovers a secret society of King Arthur's descendants—and a conspiracy tied to the night her mother died."},
+      {t:"Life on Mars",a:"Jonathan Strahan (ed.)",isbn:"9780670012169",g:["Short Stories","Science Fiction"],d:"Twelve original stories explore what it would mean to travel to and live on Mars, across a wide range of tones, styles, and visions of humanity's relationship with the red planet."},
+      {t:"A Long Petal of the Sea",a:"Isabel Allende",isbn:"9781984820150",g:["Historical Fiction","Spain","Chile"],d:"Two strangers forge a marriage of necessity to flee Franco's Spain aboard Pablo Neruda's refugee ship, beginning decades of exile and, eventually, something like love."},
+      {t:"Love, Hate and Other Filters",a:"Samira Ahmed",isbn:"9781616958473",g:["Realistic Fiction","Identity","Islam"],d:"Maya Aziz, a Muslim Indian American teenager in suburban Chicago, fights for her dream of film school while a terrorist attack reshapes how her community—and her school—sees her."},
+      {t:"The Nightingale",a:"Kristin Hannah",isbn:"9780312577223",g:["Historical Fiction","WWII","France"],d:"Two French sisters take separate, equally dangerous paths through Nazi occupation—one hiding Jewish children, one guiding Allied pilots to safety across the Pyrenees."},
+      {t:"Orphan Train",a:"Christina Baker Kline",isbn:"9780061950728",g:["Historical Fiction","Dual Timeline"],d:"A present-day foster teenager performing community service and a woman in her nineties who, as an Irish immigrant child, rode the orphan trains of the early twentieth century—their stories running in parallel."}
+    ],
+    nonfiction:[
+      {t:"The 57 Bus",a:"Dashka Slater",isbn:"9780374303235",g:["Narrative Nonfiction","Hate Crime","Justice"],d:"On a single afternoon in Oakland, two teenagers share eight minutes on a bus. A reckless act leaves Sasha severely burned and Richard facing life imprisonment, and the case becomes international news."},
+      {t:"Atomic Habits",a:"James Clear",isbn:"9780735211292",g:["Self-Help","Psychology"],d:"One of the world's leading researchers on habit formation lays out the science and strategy of small behavioral changes—and why the tiniest adjustments, compounded over time, produce remarkable results."},
+      {t:"Beast",a:"Doug Merlino",isbn:"9781620401552",g:["Narrative Nonfiction","Sports","MMA"],d:"A journalist embeds himself inside a high-level mixed martial arts gym in Florida, following fighters through training, travel, and competition in a sport that demands everything from the body."},
+      {t:"Becoming",a:"Michelle Obama",isbn:"9781524763138",g:["Memoir","Politics","Race"],d:"The former First Lady traces her path from the South Side of Chicago through Princeton, Harvard Law, and a career in public service—and eight years in a house whose history she was still learning to inhabit."},
+      {t:"Boost!",a:"Michael Bar-Eli",isbn:"9780190661731",g:["Nonfiction","Sports Psychology","Business"],d:"Sports and organizational psychologist Michael Bar-Eli translates lessons from elite athletic performance into practical strategies for leaders at any stage of their careers."},
+      {t:"Bravey",a:"Alexi Pappas",isbn:"9781984801128",g:["Memoir","Track","Film"],d:"Olympic runner, filmmaker, and writer Alexi Pappas refuses to pick a lane. This memoir traces her pursuit of multiple dreams simultaneously—and the post-Olympic depression that nearly undid her before she emerged whole."},
+      {t:"Can't Hurt Me",a:"David Goggins",isbn:"9781544512273",g:["Memoir","Self-Motivation","Military"],d:"From an abused child with no future to a Navy SEAL and one of the world's top endurance athletes, Goggins describes the mental discipline that carried him through each transformation."},
+      {t:"Cinderella Ate My Daughter",a:"Peggy Orenstein",isbn:"9780061711534",g:["Nonfiction","Gender","Culture"],d:"A journalist and mother investigates the proliferation of hyper-pink, princess-centered culture directed at young girls—and what it may be quietly teaching them about their own worth."},
+      {t:"A Crack in Creation",a:"Jennifer Doudna & Samuel Sternberg",isbn:"9780544716940",g:["Science","Genetics","Ethics"],d:"Nobel laureate Jennifer Doudna co-invented CRISPR—and then called for a moratorium on its use in human embryos. This is her account of what was discovered, what it makes possible, and the responsibility that comes with it."},
+      {t:"Crossing the Line",a:"Kareem Rosser",isbn:"9781250270863",g:["Memoir","Sports","Coming of Age"],d:"Growing up in a Philadelphia neighborhood defined by poverty and violence, Kareem Rosser discovered polo through a West Philly stable—and rode it all the way to the first all-Black national interscholastic polo championship."},
+      {t:"Endurance",a:"Scott Kelly",isbn:"9781524731595",g:["Memoir","Space","Science"],d:"Astronaut Scott Kelly spent nearly a year on the International Space Station—longer than any other American at the time—and returned to discover what a year in space had done to his body, his mind, and his sense of home."},
+      {t:"Girl Code",a:"Andrea Gonzales & Sophie Houser",isbn:"9780062472502",g:["Nonfiction","Technology","Women"],d:"Two teenage girls met at Girls Who Code summer camp, built a viral video game, and got an inside look at some of the biggest companies in tech—this is their story, and their guide to finding your voice through coding."},
+      {t:"Kent State",a:"Derf Backderf",isbn:"9781419734847",g:["Graphic Nonfiction","History","War"],d:"On May 4, 1970, the Ohio National Guard killed four unarmed college students protesting Vietnam. Through meticulous research and graphic journalism, Backderf reconstructs the four days that led to the shots."},
+      {t:"My Greatest Save",a:"Briana Scurry",isbn:"9781419757679",g:["Memoir","Soccer","LGBTQ"],d:"The first openly gay player and the only Black starter on the legendary U.S. Women's National Team reflects on her Olympic gold medals, her famous 1999 World Cup save, and the injuries that nearly ended her career."},
+      {t:"Ordinary Hazards",a:"Nikki Grimes",isbn:"9781629798813",g:["Memoir","Poetry","Resilience"],d:"Growing up with a schizophrenic mother, bounced between foster families, and preyed upon by those she trusted, Nikki Grimes discovered at age six that words on paper could hold what life could not."},
+      {t:"Poisoned Water",a:"Candy J. Cooper & Marc Aronson",isbn:"9781547602322",g:["Narrative Nonfiction","Environment","Race"],d:"The full story of the Flint water crisis: not just how officials failed the city, but how decades of racism and segregation created conditions where an entire community could be dismissed when it said something was wrong."},
+      {t:"The Radium Girls",a:"Kate Moore",isbn:"9781492649359",g:["Narrative Nonfiction","History","Labor"],d:"During and after WWI, hundreds of young women painted watch dials with radium-based paint—instructed to point their brushes with their lips. The story of their fight for justice changed American labor law."},
+      {t:"Return of the King",a:"Brian Windhorst & Dave McMenamin",isbn:"9781478971672",g:["Narrative Nonfiction","Basketball","Sports"],d:"The inside story of LeBron James's decision to come home to Cleveland, the championship team assembled around him, and the greatest comeback in NBA Finals history."},
+      {t:"Rich AF",a:"Vivian Tu",isbn:"9780593714911",g:["Nonfiction","Personal Finance"],d:"A former Wall Street trader reveals what wealthy people understand about money that most people are never taught—and how anyone can use those principles to build toward financial independence."},
+      {t:"Rich Dad Poor Dad",a:"Robert T. Kiyosaki",isbn:"9781612681122",g:["Nonfiction","Personal Finance"],d:"The perennial bestseller contrasts two philosophies of money—one rooted in working for a paycheck, one in making assets work for you—and argues that financial literacy is the education schools don't provide."},
+      {t:"Rise",a:"Daniel Rodriguez",isbn:"9780544365605",g:["Memoir","Military","Sports"],d:"A decorated soldier who survived the Battle of Kamdesh coped with PTSD by pursuing his dream of playing college football—and earned a place on the Clemson University team."},
+      {t:"Rocket Boys",a:"Homer H. Hickam",isbn:"038533320X",g:["Memoir","Space","Coming of Age"],d:"In Coalwood, West Virginia, a coal miner's son becomes obsessed with rockets after Sputnik crosses the sky overhead—and launches a story that ends at NASA, two decades later."},
+      {t:"Running to Glory",a:"Sam McManis",isbn:"9781493041527",g:["Narrative Nonfiction","Sports","Immigration"],d:"The cross country team from Eisenhower High in Yakima—mostly children of migrant workers—competes against wealthy suburban schools for the state championship, driven by a coach who knows what it means to start with nothing."},
+      {t:"Singled Out",a:"Andrew Maraniss",isbn:"9780593116722",g:["Biography","Baseball","LGBTQ"],d:"The story of Glenn Burke: outfielder for the Dodgers, openly gay, the first player to give another a high five—and the man whose MLB career was cut short in ways the sport would not fully reckon with for decades."},
+      {t:"Solito: A Memoir",a:"Javier Zamora",isbn:"9780593498064",g:["Memoir","Immigration","El Salvador"],d:"At nine years old, Javier Zamora traveled 3,000 miles alone from El Salvador to the United States—across deserts, borders, and past pointed guns—with strangers who became, for two months, his only family."},
+      {t:"The Spider Network",a:"David Enrich",isbn:"9780062452986",g:["Narrative Nonfiction","Finance","Corruption"],d:"The true story of how a brilliant but troubled mathematician became the linchpin of a scheme to manipulate Libor—the rate underpinning trillions in global loans—until it all unraveled in vicious, backstabbing fashion."},
+      {t:"Stamped from the Beginning",a:"Ibram X. Kendi",isbn:"9781568585987",g:["History","Race","Civil Rights"],d:"Using the lives of five major American intellectuals as guides, Kendi traces the entire history of anti-Black racist ideas in America—and argues they were never born of ignorance, but invented to justify policies already in place."},
+      {t:"Unpunished Murder",a:"Lawrence Goldstone",isbn:"9781338239454",g:["History","Civil Rights","Law"],d:"On Easter Sunday 1873, white supremacists massacred over one hundred unarmed Black Americans in Louisiana. The Supreme Court opinion in U.S. v. Cruikshank helped institutionalize racism for the next century."},
+      {t:"Vets and Pets",a:"Dava Guerin & Kevin Ferris",isbn:"9781510721937",g:["Nonfiction","Veterans","Animals"],d:"Fifteen stories of the bonds between wounded warriors and the service and companion animals—dogs, cats, horses, birds of prey—that helped them find their footing in civilian life."},
+      {t:"Wasted",a:"Marya Hornbacher",isbn:"9780062327031",g:["Memoir","Eating Disorders","Mental Health"],d:"An unflinching account of anorexia and bulimia from the inside, written by a survivor who now works in the field of eating disorder treatment—and who argues that recovery is possible, but not guaranteed."},
+      {t:"Ways of Grace",a:"James Blake & Carol Taylor",isbn:"9780062354525",g:["Memoir","Tennis","Social Justice"],d:"Tennis champion James Blake reflects on athletes and public figures who have not only overcome adversity but used their experiences to unite rather than divide."}
+    ]
+  },
+  grade12: {
+    label:"Incoming 12th Grade", downloadUrl:"https://docs.google.com/document/d/17q4fyQqNHQAx-E9lTcOJ8J9gTjk2VidVylrQk4VFyHg/edit?usp=sharing", pdfUrl:"summer_reading_2026_grade12.pdf",
+    fiction:[
+      {t:"First-Year Orientation",a:"Lauren Gibaldi & Eric Smith (eds.)",isbn:"9781536224498",g:["Short Stories","College Life"],d:"Sixteen linked stories—spanning the humorous, the heartfelt, and the ghostly—chronicle the first shaky steps of a range of characters into the terrifying and exhilarating world of college."},
+      {t:"Malibu Rising",a:"Taylor Jenkins Reid",isbn:"9781524798673",g:["Historical Fiction","Family"],d:"Four famous siblings throw an epic end-of-summer party that spirals out of control as the secrets and loves that have shaped their family across generations come to light."},
+      {t:"Uncommon Type",a:"Tom Hanks",isbn:"9781101911945",g:["Short Stories","Literary Fiction"],d:"The actor's debut story collection: a bowling champion afraid his fame has ruined his love of the game, an eccentric billionaire who finds real life in a down-and-out motel, and others."},
+      {t:"Warrior Girl Unearthed",a:"Angeline Boulley",isbn:"9781250766588",g:["Thriller","Indigenous Fiction"],d:"With missing Indigenous women in the headlines and grave robbers profiting from her Anishinaabe tribe, Perry takes matters into her own hands to solve a murder investigation and reclaim her people's inheritance."},
+      {t:"Americanah",a:"Chimamanda Ngozi Adichie",isbn:"9780307455925",g:["Realistic Fiction","Immigration","Nigeria"],d:"A young woman leaves Nigeria and her first love behind to build a new life in America, only to find that the country and the person she imagined are both more complicated than she expected."},
+      {t:"The Bonesetter's Daughter",a:"Amy Tan",isbn:"9780345457370",g:["Historical Fiction","China","Family"],d:"A woman in San Francisco receives her aging mother's handwritten memoirs—and discovers that the secrets of her mother's childhood in rural China have been shaping both their lives all along."},
+      {t:"The Color Purple",a:"Alice Walker",isbn:"9780143135692",g:["Historical Fiction","Feminism","Race"],d:"Through twenty years of letters between sisters Celie and Nettie, Alice Walker's Pulitzer Prize-winning novel traces two lives shaped by violence, love, faith, and an unbreakable bond across distance and silence."},
+      {t:"Firekeeper's Daughter",a:"Angeline Boulley",isbn:"9781250766564",g:["Mystery","Thriller","Indigenous Fiction"],d:"Eighteen-year-old Daunis Fontaine goes undercover for the FBI to investigate a lethal new drug circulating through her Ojibwe reservation—and discovers that truth-telling is more dangerous than anything she was told to watch for."},
+      {t:"His Hideous Heart",a:"Dahlia Adler (ed.)",isbn:"9781250302779",g:["Short Stories","Gothic","Horror"],d:"Thirteen authors reimagine thirteen of Edgar Allan Poe's most unsettling tales for a contemporary audience, updating the horror, the obsession, and the dread while leaving intact what made the originals unforgettable."},
+      {t:"The Invisible Life of Addie LaRue",a:"V.E. Schwab",isbn:"9780765387561",g:["Fantasy","Romance"],d:"A young woman makes a Faustian bargain to live forever—and is cursed to be forgotten by everyone she meets. For nearly three hundred years she wanders history, until one evening a young man in a hidden bookstore remembers her name."},
+      {t:"The Jasmine Project",a:"Meredith Ireland",isbn:"9781534477025",g:["Contemporary Fiction","Romance"],d:"After catching her longtime boyfriend cheating, Jasmine Yap refuses to date anyone new—so her giant, overprotective family secretly arranges a party full of eligible young men to show her how she should be treated."},
+      {t:"Little and Lion",a:"Brandy Colbert",isbn:"9780316349000",g:["Realistic Fiction","LGBTQ+","Mental Health"],d:"When Suzette comes home from boarding school, she finds herself falling for the same girl her stepbrother Lionel—recently diagnosed with bipolar disorder—loves, while her family teeters on the edge of crisis."},
+      {t:"The Lowland",a:"Jhumpa Lahiri",isbn:"9780307278265",g:["Historical Fiction","India","Family"],d:"Two inseparable brothers in Calcutta are divided by politics, love, and ideology in the 1960s—setting off a family saga that unfolds across generations, continents, and long-deferred reckonings."},
+      {t:"Machine Man",a:"Max Barry",isbn:"9780307476890",g:["Science Fiction","Humor"],d:"After losing a leg in an industrial accident, scientist Charles Neumann teams up with his prosthetist to pursue ever more elaborate upgrades—until the line between optimization and obsession ceases to matter."},
+      {t:"Missionaries",a:"Phil Klay",isbn:"9781984880659",g:["Historical Fiction","War","Colombia"],d:"Through four interlocking lives, Phil Klay examines how America's post-9/11 wars exported their violence across the world—landing, finally, in Colombia's seemingly endless internal conflict."},
+      {t:"The Nickel Boys",a:"Colson Whitehead",isbn:"9780385537070",g:["Historical Fiction","Civil Rights"],d:"Pulitzer Prize winner. The harrowing experiences of two African American teenagers at an abusive reform school in Jim Crow-era Florida—based on the real Dozier School for Boys."},
+      {t:"Norse Mythology",a:"Neil Gaiman",isbn:"9780393609097",g:["Mythology","Retelling"],d:"Neil Gaiman presents the great Norse myths as a novelistic arc—from the genesis of the nine worlds through the exploits of the gods and giants, to Ragnarok and the rebirth that follows."},
+      {t:"Our Missing Hearts",a:"Celeste Ng",isbn:"9780593492543",g:["Literary Fiction","Dystopia"],d:"Twelve-year-old Bird Gardner lives in a future America where laws restrict culture and thought—and sets out to find his Chinese American poet mother, who left when he was nine to protect him from her own dangerous work."},
+      {t:"Parable of the Sower",a:"Octavia E. Butler",isbn:"0941423999",g:["Science Fiction","Dystopia"],d:"When unattended environmental and economic crises collapse society, Lauren Olamina—an empath—loses her family and home and ventures out into the unprotected American landscape, carrying the seeds of a new faith."},
+      {t:"Permanent Record",a:"Mary H.K. Choi",isbn:"9781534445970",g:["Realistic Fiction","Romance"],d:"A graveyard-shift deli worker in Brooklyn and an international pop icon cross paths at 5 a.m.—and what begins as an absurdist premise becomes a searching, funny novel about who we are when no one is watching."},
+      {t:"The Project",a:"Courtney Summers",isbn:"9781250105738",g:["Thriller","Cult"],d:"After years of silence from her sister Bea, who joined an elusive community called The Unity Project, Lo gains access—and begins to realize the organization is darker and more dangerous than anyone around her will admit."},
+      {t:"The Song of Achilles",a:"Madeline Miller",isbn:"9780062060624",g:["Mythology","Historical Fiction","LGBTQ"],d:"The Trojan War retold from the perspective of Patroclus—the exiled prince who becomes Achilles' closest companion—in a novel about love, glory, and the terrible cost of both."},
+      {t:"Such a Fun Age",a:"Kiley Reid",isbn:"9780525541905",g:["Realistic Fiction","Race"],d:"A young Black babysitter is falsely accused of kidnapping at a Philadelphia grocery store; the employer's attempt to 'make things right' sets off a darkly comic collision of race, class, and good intentions."},
+      {t:"Symptoms of Being Human",a:"Jeff Garvin",isbn:"9780062382863",g:["Realistic Fiction","LGBTQ+"],d:"Riley Cavanaugh, gender fluid, starts an anonymous blog to vent what it's really like to navigate high school, a congressman father, and an identity that defies easy answers—until the blog goes viral."},
+      {t:"Tenth of December",a:"George Saunders",isbn:"9780812993806",g:["Short Stories","Literary Fiction"],d:"Saunders' Booker Prize-shortlisted collection: a boy facing an abduction, a soldier returned from war, a cancer patient walking into the woods—rendered with exuberant prose, deep humanity, and stylistic invention."},
+      {t:"Tigers, Not Daughters",a:"Samantha Mabry",isbn:"9781616208967",g:["Magical Realism","Family"],d:"A year after oldest sister Ana falls to her death, the Torres sisters of San Antonio begin hearing her laughter and seeing her shadow—wondering if she is haunting them, and what she is trying to tell them."},
+      {t:"Traveling Light",a:"Lynne Branard",isbn:"9781101989043",g:["Contemporary Fiction","Road Trip"],d:"Alissa Wells impulsively bids on an abandoned storage unit and becomes the owner of a dead man's ashes—then drives from North Carolina to New Mexico with her three-legged dog and a waitress named Blossom to return them."},
+      {t:"The Vanishing Half",a:"Brit Bennett",isbn:"9780525536291",g:["Realistic Fiction","Race","Family"],d:"Twin sisters flee their Black southern community at sixteen—one to raise her own Black daughter in the same town, the other to secretly pass for white. Their daughters' stories intersect in ways neither anticipated."},
+      {t:"We Are Okay",a:"Nina LaCour",isbn:"9780525425892",g:["Realistic Fiction","LGBTQ+"],d:"After leaving her life behind to start college in New York, Marin must face the truth about the tragedy that unfolded in the final weeks of summer—when her friend Mabel comes to visit."}
+    ],
+    nonfiction:[
+      {t:"Victory. Stand!",a:"Tommie Smith & Derrick Barnes",isbn:"9781324003908",g:["Graphic Memoir","Sports","Civil Rights"],d:"On October 16, 1968, Tommie Smith raised his black-gloved fist on the Olympic podium in Mexico City. Both he and John Carlos were expelled from the Games, received death threats, and faced decades of hardship—and never stopped believing it was worth it."},
+      {t:"21 Lessons for the 21st Century",a:"Yuval Noah Harari",isbn:"9780525512172",g:["Nonfiction","Philosophy","Society"],d:"How do computers and robots change the meaning of being human? How do we navigate fake news, polarization, and the collapse of traditional institutions? Harari's probing investigation into today's most urgent questions."},
+      {t:"All You Can Ever Know",a:"Nicole Chung",isbn:"9781936787975",g:["Memoir","Adoption","Identity"],d:"Born severely premature, placed for adoption by her Korean parents, and raised by a white family in Oregon, Nicole Chung eventually went looking for the truth about where she came from—and found it more complicated than the myth she had been given."},
+      {t:"Blood, Sweat, and Pixels",a:"Jason Schreier",isbn:"9780062651235",g:["Nonfiction","Technology","Gaming"],d:"Behind the scenes of video game development, where a team of 600 overworked developers or a solitary genius must somehow navigate artistic ambitions, technical impossibilities, and corporate interference to bring a game to life."},
+      {t:"Blue Blood",a:"Edward Conlon",isbn:"9781573222662",g:["Memoir","Law Enforcement"],d:"A richly textured portrait of life as an NYPD officer: from growing up with a police father, to a first beat in the South Bronx, to the rise to detective—capturing the complex and often contradictory life of the force."},
+      {t:"Calypso",a:"David Sedaris",isbn:"9780316392389",g:["Memoir","Humor","Family"],d:"Sedaris turns his formidable powers of observation toward middle age, mortality, and the impossible vacation from the self—in a collection that is very, very funny, and quietly devastating."},
+      {t:"The Conservative Sensibility",a:"George F. Will",isbn:"9780316480932",g:["Nonfiction","Politics","History"],d:"George Will argues that the Founders' vision of natural rights and limited government is under threat—both from progressivism and from within the Republican Party—and makes the case for a return to constitutional principles."},
+      {t:"The Cost of These Dreams",a:"Wright Thompson",isbn:"9780143133872",g:["Essays","Sports","Biography"],d:"Award-winning ESPN journalist Wright Thompson collects his finest profiles and essays—true stories of athletes who chased greatness and the price they paid, rendered with insight, humor, and moving detail."},
+      {t:"Dead Wake",a:"Erik Larson",isbn:"9780307408877",g:["Narrative Nonfiction","History","WWI"],d:"On May 1, 1915, the RMS Lusitania set sail for Liverpool carrying a record number of children and infants. Larson reconstructs the final voyage of the ship and the German U-boat stalking it in gripping, novelistic detail."},
+      {t:"The Fall of the House of FIFA",a:"David Conn",isbn:"9781568585963",g:["Nonfiction","Sports","Corruption"],d:"The inside story of how FIFA—the governing body of the world's most popular sport—rotted from the inside through decades of bribery, corruption, and abuse, until investigators in multiple countries began to close in."},
+      {t:"Grass",a:"Keum Suk Gendry-Kim",isbn:"9781770463622",g:["Graphic Novel","WWII","Korea"],d:"A powerful antiwar graphic novel telling the life story of a Korean girl forced into sexual slavery for the Japanese Imperial Army during WWII, painted in flowing black ink that gives even the most difficult history a kind of harrowing beauty."},
+      {t:"How I Built This",a:"Guy Raz",isbn:"9780358216766",g:["Nonfiction","Entrepreneurship","Business"],d:"Based on the acclaimed NPR podcast, Guy Raz draws on interviews with more than 200 successful entrepreneurs to share the real stories behind iconic companies—and the lessons that apply to anyone who has ever dreamed of building something."},
+      {t:"Hunger: A Memoir of My Body",a:"Roxane Gay",isbn:"9780062362599",g:["Memoir","Body Image","Abuse"],d:"Roxane Gay casts a critical eye on her childhood, teens, and twenties—including the devastating act of violence that acted as a turning point in her young life—in a memoir that is unflinching about the body and its complicated relationship with hunger."},
+      {t:"Into the Wild",a:"Jon Krakauer",isbn:"9780679428503",g:["Narrative Nonfiction","Survival","Nature"],d:"The haunting true story of twenty-two-year-old Chris McCandless, who walked into the Alaskan wilderness alone in the spring of 1992—and whose emaciated body was found by hunters four months later."},
+      {t:"The Line Becomes a River",a:"Francisco Cantú",isbn:"9780735217713",g:["Memoir","Immigration","Border"],d:"The son of a Mexican immigrant joins the U.S. Border Patrol—and in the interplay between his training, his dreams, and what he witnesses, begins to understand the full weight of the border on both sides."},
+      {t:"Master Slave Husband Wife",a:"Ilyon Woo",isbn:"9781501191053",g:["Narrative Nonfiction","History","Slavery"],d:"The remarkable true story of Ellen and William Craft, who escaped slavery through determination and disguise—with Ellen passing as a wealthy, disabled white man and William posing as his slave."},
+      {t:"Outliers",a:"Malcolm Gladwell",isbn:"0316017922",g:["Nonfiction","Psychology","Success"],d:"Gladwell asks what makes high-achievers different—and argues that we pay too much attention to what successful people are like, and too little to where they are from: their culture, family, generation, and specific upbringing."},
+      {t:"Presidential Courage",a:"Michael R. Beschloss",isbn:"9780684857053",g:["Nonfiction","History","U.S. Presidents"],d:"Documents crucial historical moments in each of the first forty-three presidencies when bold executive decisions dramatically altered the future of the United States—and what it took for leaders to make them."},
+      {t:"Rise and Grind",a:"Daymond John",isbn:"9780804189958",g:["Nonfiction","Business","Entrepreneurship"],d:"The Shark Tank investor and FUBU founder traces his own rise from obscurity while examining other professionals who achieved their goals through a determined work ethic—and translating those lessons for any career."},
+      {t:"The Short and Tragic Life of Robert Peace",a:"Jeff Hobbs",isbn:"9781476731902",g:["Nonfiction","Biography"],d:"A heartfelt, riveting biography of a talented young African American man who escaped the slums of Newark for Yale University—only to find that the distance between those two worlds could not be so easily bridged."},
+      {t:"Slow Getting Up",a:"Nate Jackson",isbn:"9780062108029",g:["Memoir","Football","Sports"],d:"An unvarnished, uncensored memoir of everyday life in the NFL—from the practice squads and training camps to the degenerative injuries and poor pensions that define most players' careers, far from the spotlight."},
+      {t:"Stamped from the Beginning",a:"Ibram X. Kendi",isbn:"9781568585987",g:["History","Race","Civil Rights"],d:"Using the lives of five major American intellectuals as guides, Kendi traces the entire history of anti-Black racist ideas in America—and argues they were never born of ignorance, but invented to justify policies already in place."},
+      {t:"We Are Not Yet Equal",a:"Carol Anderson & Tonya Bolden",isbn:"1547600764",g:["Narrative Nonfiction","Civil Rights","History"],d:"A rigorous argument that since the passage of the Thirteenth Amendment, every significant advance made by African Americans toward full democracy has been met with deliberate, systematic rollback."},
+      {t:"You Can't Touch My Hair",a:"Phoebe Robinson",isbn:"9780143129202",g:["Essays","Humor","African American Women"],d:"Phoebe Robinson's witty, sharp-elbowed essays cover what it's like to be a Black woman in contemporary America—from the micro-aggressions of daily life to the structural inequities hiding behind them."}
+    ]
+  }
+};
+
+const AP = [
+  { id:"aplang", teacher:"Ms. Duby", course:"AP Language & Composition",
+    note:"The 2026 summer assignment for AP Language & Composition is posted to Google Classroom. The title list is in Part III of the assignment.",
+    link:{ label:"View Assignment", url:"https://docs.google.com/document/d/163pG0aUOwVeWUpJUYTQ90th1cFXFicVa76D29veKhQM/edit?usp=sharing" },
+    required:[], choice:[] },
+  { id:"aplit", teacher:"Mr. Myerson", course:"AP Literature & Composition",
+    note:"Hello AP English Literature &amp; Composition Students! To prepare you for the rigors of our upcoming AP class and the AP examination next May, I am tasking you with a summer assignment that requires you to read two books (one class text, one choice text), complete a small project for your choice text, and practice annotating 3 poems while referencing some literary elements. Please note that the selected choice texts were chosen for variety, interest, and utility in preparing for the AP examination. Go to the Google Classroom page for the specific assignments, instructions, materials, and inboxes.",
+    link:{ label:"Google Classroom (code: 6jqel4nh)", url:"https://classroom.google.com/c/ODE5NzU3NDM3NzA4?cjc=6jqel4nh" },
+    required:[{ t:"Their Eyes Were Watching God", a:"Zora Neale Hurston", isbn:"9780061120060", d:"The class text every student must read. Annotate or take notes — discussion begins immediately in class, and there will be an in-class essay at the end of the second week of school. Read the book in the final three weeks of summer so it is fresh in your mind. Once the accents and dialect become familiar, this book will be straightforward but also really rewarding.", badge:"Required" }],
+    choice:[
+      { t:"Invisible Man", a:"Ralph Ellison", isbn:"9780679732761", d:"This is the most frequently referenced text on the AP exam since 1974 and one of the greatest novels of the 20th century for good reason. Here we follow a nameless narrator, a sensitive and brilliant man, who struggles with identity, acceptance, and stereotypes in a world that seems to unrelentingly render him \u201cinvisible.\u201d", badge:"Choose One" },
+      { t:"Heart of Darkness", a:"Joseph Conrad", isbn:"9780141441672", d:"The classic colonial critique in which a riverboat captain pursues an enigmatic and corrupted ivory trader through the colonial-era Congo. This novella loosely inspired the film Apocalypse Now by Francis Ford Coppola. I recommend viewing that film if you choose this book. Warning: this novella is controversial and a product of its time.", badge:"Choose One" },
+      { t:"A Portrait of the Artist as a Young Man", a:"James Joyce", isbn:"9780142437346", d:"A modernist character study that traces a man\u2019s thought-rebellion and philosophical awakening. This is a short, though challenging, stream of consciousness novel by one of Ireland\u2019s greatest writers.", badge:"Choose One" },
+      { t:"Catch-22", a:"Joseph Heller", isbn:"9781451626650", d:"One of my favorite satires ever, one as funny as it is dark. If you feel pressed down by your school, your teachers, or your parents, you will find relief and catharsis in this book. It criticizes the absurd bureaucracy of the war machine during World War II.", badge:"Choose One" },
+      { t:"The Color Purple", a:"Alice Walker", isbn:"9780143135692", d:"A harrowing story of abuse and trauma, but it also explores ways to grapple with terrible events in childhood. Explores oppression based on gender and race.", badge:"Choose One" },
+      { t:"Hamlet", a:"William Shakespeare", isbn:"9780743477123", d:"Considered by some to be Shakespeare\u2019s best (I narrowly prefer Macbeth but we do that in class, don\u2019t worry). Complex characters, revenge, ghosts, swords, a \u201cplay within a play,\u201d madness, poison. It\u2019s all here.", badge:"Choose One" },
+      { t:"Pride and Prejudice", a:"Jane Austen", isbn:"9780141439518", d:"Mr. Darcy will stride through the mists of your imagination. Witty page-turner and satire, but doesn\u2019t mind leaning into the romance. Honestly might qualify as \u201cbeach reading,\u201d but it might be the most engaging, rewarding \u201cbeach reading\u201d I can imagine.", badge:"Choose One" },
+      { t:"The Awakening", a:"Kate Chopin", isbn:"9780393976502", d:"Incredibly important early feminist work that broke new ground. A book that a surprising number of people haven\u2019t heard of, but it influenced many subversive feminist novels that followed.", badge:"Choose One" },
+      { t:"The Bell Jar", a:"Sylvia Plath", isbn:"9780061148514", d:"Disconcerting, unforgettable chronicle of a descent into insanity. I went to an exhibit of Sylvia Plath\u2019s diaries once, and it taught me that we should all destroy our teenage journals just in case we become literary icons and museums get a hold of our stuff. She was the quintessential \u201ctroubled literary genius.\u201d", badge:"Choose One" },
+      { t:"The Plague", a:"Albert Camus", isbn:"9780679720218", d:"Incredibly relevant to the COVID-19 pandemic despite being written 70 years ago (and Camus lived through the Spanish flu pandemic during his childhood). Absurdist and surreal and might change your view of the world completely\u2014or you may find you are an existentialist, and you just haven\u2019t realized it yet.", badge:"Choose One" },
+      { t:"Lord of the Flies", a:"William Golding", isbn:"9780399501487", d:"An unforgettable and disturbing allegory that explores the darkness and savagery within us all. When a group of \u201ccivilized\u201d English schoolboys are stranded on an island, they quickly descend into barbaric madness. Much like Animal Farm, while the text is deceptively simple, the themes run deep.", badge:"Choose One" },
+      { t:"The Bluest Eye", a:"Toni Morrison", isbn:"9780307278449", d:"Morrison\u2019s debut novel is set in Ohio during The Great Depression. Using a variety of unique narrative devices, Morrison shows how racism, abuse, and erasure break the sanity of a sad little girl who wishes more than anything for \u201cblue eyes.\u201d", badge:"Choose One" },
+      { t:"A Clockwork Orange", a:"Anthony Burgess", isbn:"9780393312836", d:"Written in a unique slang called \u201cNadsat,\u201d this experimental sci-fi satire explores free-will, purpose, morality, and the conflict between the individual (even an irredeemably evil one) and the government. I read this in one sitting during a thunderstorm while camping and was totally enthralled by it. It\u2019s just as good, if not better, than the masterful Kubrick film it inspired.", badge:"Choose One" }
+    ]}
+];
+
+/* ------------------------------------------------------------------ catalog URLs */
+function catalogUrl(system, title) {
+  const enc  = encodeURIComponent(title);
+  const plus = encodeURIComponent(title).replace(/%20/g, '+');
+  if (system==='roseland')  return `https://catalog.bccls.org/polaris/search/searchresults.aspx?ctx=127.1033.0.0.7&type=Keyword&term=${enc}&by=KW&sort=MP&limit=TOM=*&query=&page=0&searchid=1`;
+  if (system==='fairfield') return `https://fairfield.aspendiscovery.org/Union/Search?view=list&lookfor=${plus}&searchIndex=Keyword&searchSource=local`;
+  if (system==='caldwell')  return `https://palsplus.ent.sirsi.net/client/en_US/Caldwell/search/results?qu=${enc}&te=`;
+  if (system==='sora')      return `https://soraapp.com/library/westexnj/search/query-${enc}/titles`;
+  return '#';
+}
+
+const EXT = `<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 8.5L8.5 1.5M8.5 1.5H4.5M8.5 1.5V5.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+/* ------------------------------------------------------------------ cover loading
+   Image-only approach: no fetch(), no CORS dependencies. Works on file:// or HTTPS.
+   Each cover request tries multiple image URLs in sequence and detects the
+   "placeholder/missing" response by checking naturalWidth after onload.        */
+
+function placeholderHTML(title, author) {
+  return `<div class="cover-placeholder">
+    <span class="pt">${title}</span>
+    <div class="pr"></div>
+    <span class="pa">${author.split(';')[0].split('(')[0].trim()}</span>
+  </div>`;
+}
+
+// Probe a single URL; resolve to URL if it loads with real dimensions, else null.
+function probeImage(url, minWidth) {
+  return new Promise(resolve => {
+    const img = new Image();
+    let done = false;
+    const finish = (val) => { if (!done) { done = true; resolve(val); } };
+    img.onload  = () => finish(img.naturalWidth >= (minWidth || 40) ? url : null);
+    img.onerror = () => finish(null);
+    // Safety timeout so a hung request doesn't block forever
+    setTimeout(() => finish(null), 6000);
+    img.src = url;
+  });
+}
+
+// Try multiple sources in order until one returns a real image.
+async function fetchCoverUrl(isbn, large) {
+  const olSize    = large ? 'L' : 'M';
+  const cleanIsbn = String(isbn).replace(/[^0-9Xx]/g, '');
+
+  // 1) Open Library cover by ISBN. CORS-clean, no rate limit, and with
+  //    ?default=false it returns a 404 (not a blank placeholder) when missing,
+  //    so the probe's onerror catches it cleanly. Strong for backlist/classics.
+  const ol = `https://covers.openlibrary.org/b/isbn/${cleanIsbn}-${olSize}.jpg?default=false`;
+  const olOk = await probeImage(ol, 50);
+  if (olOk) return olOk;
+
+  // 2) Google Books volumes API (JSON, CORS-enabled). Far better coverage for
+  //    recent titles than the legacy image endpoint, and it hands back a real
+  //    thumbnail URL rather than a hotlink guess. The country param is required
+  //    or the request 403s.
+  try {
+    const resp = await fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${cleanIsbn}&country=US`);
+    if (resp.ok) {
+      const data  = await resp.json();
+      const links = data && data.items && data.items[0] &&
+                    data.items[0].volumeInfo && data.items[0].volumeInfo.imageLinks;
+      if (links) {
+        let u = links.thumbnail || links.smallThumbnail;
+        if (u) {
+          u = u.replace(/^http:/, 'https:').replace('&edge=curl', '');
+          u = u.replace(/zoom=\d/, large ? 'zoom=3' : 'zoom=2');
+          const gbOk = await probeImage(u, 50);
+          if (gbOk) return gbOk;
+        }
+      }
+    }
+  } catch (e) { /* network/quota hiccup: fall through to placeholder */ }
+
+  return null;
+}
+
+function applyCoverToCard(card, url) {
+  const ph  = card.querySelector('.cover-placeholder');
+  if (!ph) return;
+  const img = document.createElement('img');
+  img.alt   = '';
+  img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;opacity:0;transition:opacity .4s ease';
+  img.onerror = () => img.remove();
+  img.onload  = () => { requestAnimationFrame(() => { img.style.opacity = '1'; }); };
+  img.src   = url;
+  card.style.position = 'relative';
+  card.insertBefore(img, ph);
+  ph.style.display = 'none';
+}
+
+function initCoverObserver() {
+  if (!('IntersectionObserver' in window)) {
+    // Fallback: load all covers immediately
+    document.querySelectorAll('.book-card').forEach(card => {
+      const book = JSON.parse(card.dataset.book);
+      fetchCoverUrl(book.isbn, false).then(url => { if (url) applyCoverToCard(card, url); });
+    });
+    return;
+  }
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const card = entry.target;
+      if (card.dataset.coverDone) return;
+      card.dataset.coverDone = '1';
+      observer.unobserve(card);
+      const book = JSON.parse(card.dataset.book);
+      fetchCoverUrl(book.isbn, false).then(url => {
+        if (url) applyCoverToCard(card, url);
+      });
+    });
+  }, { rootMargin: '300px' });
+
+  document.querySelectorAll('.book-card').forEach(c => observer.observe(c));
+}
+
+async function loadModalCover(wrap, isbn, title, author) {
+  wrap.innerHTML = placeholderHTML(title, author);
+  const url = await fetchCoverUrl(isbn, true);
+  if (!url) return;
+  const img = document.createElement('img');
+  img.alt   = `Cover of ${title}`;
+  img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;min-height:280px';
+  img.onerror = () => img.remove();
+  img.src   = url;
+  wrap.insertBefore(img, wrap.firstChild);
+  const ph = wrap.querySelector('.cover-placeholder');
+  if (ph) ph.style.display = 'none';
+}
+
+/* ------------------------------------------------------------------ render grade section */
+function renderSection(key) {
+  const grade = BOOKS[key];
+  const hasFic = grade.fiction && grade.fiction.length > 0;
+  const hasNf  = grade.nonfiction && grade.nonfiction.length > 0;
+
+  const pdfLink = grade.pdfUrl
+    ? `<a href="${grade.pdfUrl}" class="grade-pdf-link" target="_blank" rel="noopener" aria-label="Download printable list for ${grade.label}">
+        ${EXT} Printable list
+      </a>`
+    : '';
+
+  let html = `<section class="grade-section" id="${key}" aria-labelledby="heading-${key}">
+    <div class="grade-header">
+      <h2 class="grade-name" id="heading-${key}">${grade.label}</h2>
+      ${pdfLink}
+    </div>`;
+
+  if (hasFic) html += buildRow(grade.fiction, 'Fiction', key, 'fiction');
+  if (hasNf)  html += buildRow(grade.nonfiction, 'Nonfiction', key, 'nonfiction');
+  html += `</section><div class="section-divider" aria-hidden="true"></div>`;
+  return html;
+}
+
+function buildRow(books, label, gradeKey, type) {
+  return `<div class="book-row">
+    <div class="row-header">
+      <span class="row-label">${label}</span>
+      <span class="row-line" aria-hidden="true"></span>
+      <span class="row-count">${books.length} titles</span>
+    </div>
+    <div class="scroll-wrap" id="wrap-${gradeKey}-${type}">
+      <div class="scroll-track" role="list" aria-label="${label} — ${BOOKS[gradeKey].label}">
+        ${books.map(b => buildCard(b, gradeKey, type)).join('')}
+      </div>
+    </div>
+  </div>`;
+}
+
+function buildCard(book, gradeKey, type) {
+  const attr  = JSON.stringify(book).replace(/"/g,'&quot;');
+  const genre = book.g && book.g[0] ? `<span class="card-genre" aria-hidden="true">${book.g[0]}</span>` : '';
+  return `<div class="book-card" role="listitem" tabindex="0"
+    aria-label="${book.t.replace(/"/g,'&quot;')} by ${book.a.replace(/"/g,'&quot;')}"
+    data-book="${attr}" data-grade="${gradeKey}" data-type="${type}">
+    ${placeholderHTML(book.t, book.a)}
+    ${genre}
+  </div>`;
+}
+
+/* ------------------------------------------------------------------ render AP */
+function renderAP() {
+  let html = `<section class="ap-section" id="ap" aria-labelledby="heading-ap">
+    <div class="ap-header"><h2 class="ap-name" id="heading-ap">AP Courses</h2></div>
+    <p class="ap-intro">AP English courses use a separate packet format. Reading requirements and assignments are posted to Google Classroom.</p>`;
+  AP.forEach(course => {
+    html += `<div class="ap-card">
+      <h3 class="ap-card-title">${course.course} <span class="ap-teacher">| ${course.teacher}</span></h3>
+      <p class="ap-card-note">${course.note}</p>`;
+    if (course.link) html += `<a href="${course.link.url}" target="_blank" rel="noopener" class="ap-ext-link">${course.link.label} ${EXT}</a>`;
+    if (course.required.length) {
+      html += `<div class="ap-book-group"><p class="ap-group-label">Required Reading</p>`;
+      course.required.forEach(b => { html += apBookItem(b); });
+      html += `</div>`;
+    }
+    if (course.choice.length) {
+      html += `<div class="ap-book-group"><p class="ap-group-label">Choose One</p>`;
+      course.choice.forEach(b => { html += apBookItem(b); });
+      html += `</div>`;
+    }
+    html += `</div>`;
+  });
+  html += `</section>`;
+  return html;
+}
+
+function apBookItem(b) {
+  const pid   = `ap-${b.isbn}`;
+  const badge = b.badge === 'Required'
+    ? `<span class="ap-book-badge">${b.badge}</span>`
+    : '';
+  return `<div class="ap-book-item">
+    <div class="ap-book-cover" id="${pid}">
+      <div style="width:100%;height:100%;background:var(--surface2);border-radius:3px"></div>
+    </div>
+    <div class="ap-book-text">
+      <div class="ap-book-title">${b.t}</div>
+      <div class="ap-book-author">${b.a}</div>
+      ${badge}
+      <p class="ap-book-desc">${b.d}</p>
+    </div>
+  </div>`;
+}
+
+function loadApCovers() {
+  AP.forEach(course => {
+    [...course.required, ...course.choice].forEach(b => {
+      const wrap = document.getElementById(`ap-${b.isbn}`);
+      if (!wrap) return;
+      fetchCoverUrl(b.isbn, false).then(url => {
+        if (!url) return;
+        wrap.innerHTML = `<img src="${url}" alt="" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:3px" onerror="this.parentElement.innerHTML=''">`;
+      });
+    });
+  });
+}
+
+/* ------------------------------------------------------------------ scroll-end fade */
+function initScrollFades() {
+  document.querySelectorAll('.scroll-track').forEach(track => {
+    const wrap = track.closest('.scroll-wrap');
+    if (!wrap) return;
+    const update = () => {
+      const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 8;
+      wrap.classList.toggle('at-end', atEnd);
+    };
+    track.addEventListener('scroll', update, { passive: true });
+    update();
+  });
+}
+
+/* ------------------------------------------------------------------ scroll-spy */
+function initScrollSpy() {
+  const sections = ['grade9','grade10','grade11','grade12','ap'];
+  const navH = document.getElementById('gradeNav').offsetHeight;
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const id = entry.target.id;
+      document.querySelectorAll('.nav-tab').forEach(tab => {
+        const isMatch = tab.dataset.target === id;
+        tab.classList.toggle('active', isMatch);
+        if (isMatch) tab.setAttribute('aria-current','page');
+        else tab.removeAttribute('aria-current');
+      });
+    });
+  }, { rootMargin: `-${navH + 10}px 0px -60% 0px` });
+
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+}
+
+/* ------------------------------------------------------------------ filter + random (per grade) */
+function buildFilterBar(gradeKey) {
+  return `<div class="filter-bar" id="filterbar-${gradeKey}">
+    <div class="filter-wrap">
+      <svg class="filter-icon" width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+        <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.4"/>
+        <line x1="10.5" y1="10.5" x2="14" y2="14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+      <input class="grade-filter" type="search" id="filter-${gradeKey}"
+        placeholder="Filter by title, author, or genre…"
+        aria-label="Filter books in this section">
+    </div>
+    <button class="grade-random-btn" id="random-${gradeKey}" aria-label="Open a random book from this grade">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+        <path d="M1 4h2.5L9 10h4m0 0-2-2m2 2-2 2M1 10h2.5l1.4-1.75M9 4h4m0 0-2-2m2 2-2 2" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Surprise me
+    </button>
+  </div>`;
+}
+
+function initFilters() {
+  ['grade9','grade10','grade11','grade12'].forEach(key => {
+    const section = document.getElementById(key);
+    if (!section) return;
+
+    // Inject filter bar after grade-header
+    const header = section.querySelector('.grade-header');
+    if (header) header.insertAdjacentHTML('afterend', buildFilterBar(key));
+
+    const input  = document.getElementById(`filter-${key}`);
+    const btn    = document.getElementById(`random-${key}`);
+
+    // Collect all cards for this grade once
+    const allCards = () => Array.from(section.querySelectorAll('.book-card'));
+
+    // ── filter ──────────────────────────────────────────────────
+    input.addEventListener('input', () => {
+      const q = input.value.trim().toLowerCase();
+      let noMatch = true;
+
+      allCards().forEach(card => {
+        const book   = JSON.parse(card.dataset.book);
+        const haystack = [book.t, book.a, ...(book.g || [])].join(' ').toLowerCase();
+        const show   = !q || haystack.includes(q);
+        card.classList.toggle('sr-hidden', !show);
+        if (show) noMatch = false;
+      });
+
+      // Hide/show rows whose every card is filtered out
+      section.querySelectorAll('.book-row').forEach(row => {
+        const visible = Array.from(row.querySelectorAll('.book-card'))
+                             .some(c => !c.classList.contains('sr-hidden'));
+        row.classList.toggle('all-hidden', !visible);
+      });
+
+      // No-match message
+      let msg = section.querySelector('.no-match-msg');
+      if (noMatch && q) {
+        if (!msg) {
+          msg = document.createElement('p');
+          msg.className = 'no-match-msg';
+          section.appendChild(msg);
+        }
+        msg.textContent = `No titles match "${input.value.trim()}" — try a different word.`;
+      } else if (msg) {
+        msg.remove();
+      }
+
+      // Update live row counts
+      section.querySelectorAll('.book-row').forEach(row => {
+        const countEl  = row.querySelector('.row-count');
+        if (!countEl) return;
+        const visible  = Array.from(row.querySelectorAll('.book-card'))
+                              .filter(c => !c.classList.contains('sr-hidden')).length;
+        const total    = row.querySelectorAll('.book-card').length;
+        countEl.textContent = q
+          ? `${visible} of ${total} titles`
+          : `${total} titles`;
+      });
+    });
+
+    // ── random pick ─────────────────────────────────────────────
+    btn.addEventListener('click', () => {
+      const pool = allCards().filter(c => !c.classList.contains('sr-hidden'));
+      if (!pool.length) return;
+      const card = pool[Math.floor(Math.random() * pool.length)];
+      openModal(JSON.parse(card.dataset.book));
+      // Animate the button
+      btn.classList.remove('rolling');
+      void btn.offsetWidth; // force reflow so the animation restarts
+      btn.classList.add('rolling');
+      btn.addEventListener('animationend', () => btn.classList.remove('rolling'), { once: true });
+    });
+  });
+}
+
+/* ------------------------------------------------------------------ init */
+function init() {
+  const main = document.getElementById('main');
+  let html = '';
+  ['grade9','grade10','grade11','grade12'].forEach(k => { html += renderSection(k); });
+  html += renderAP();
+  main.innerHTML = html;
+
+  // Card click / keypress
+  main.addEventListener('click', e => {
+    const card = e.target.closest('.book-card');
+    if (card) openModal(JSON.parse(card.dataset.book));
+  });
+  main.addEventListener('keydown', e => {
+    if (e.key==='Enter' || e.key===' ') {
+      const card = e.target.closest('.book-card');
+      if (card) { e.preventDefault(); openModal(JSON.parse(card.dataset.book)); }
+    }
+  });
+
+  // Nav tab click (explicit navigation)
+  document.querySelectorAll('.nav-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = document.getElementById(tab.dataset.target);
+      if (target) {
+        const navH = document.getElementById('gradeNav').offsetHeight;
+        window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - navH - 12, behavior:'smooth' });
+        const heading = target.querySelector('h2');
+        if (heading) { heading.setAttribute('tabindex', '-1'); heading.focus({ preventScroll: true }); }
+      }
+    });
+  });
+
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  document.getElementById('modalOverlay').addEventListener('click', e => { if (e.target===e.currentTarget) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key==='Escape') closeModal(); });
+
+  initCoverObserver();
+  loadApCovers();
+  initScrollFades();
+  initScrollSpy();
+  initFilters();
+}
+
+/* ------------------------------------------------------------------ modal */
+function getFocusable(container) {
+  return Array.from(container.querySelectorAll(
+    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+  )).filter(el => !el.disabled && el.offsetParent !== null);
+}
+
+function trapFocus(e) {
+  const panel = document.getElementById('modalPanel');
+  const focusable = getFocusable(panel);
+  if (!focusable.length) return;
+  const first = focusable[0];
+  const last  = focusable[focusable.length - 1];
+  if (e.key === 'Tab') {
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault(); last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault(); first.focus();
+    }
+  }
+}
+
+function announce(msg) {
+  const el = document.getElementById('srAnnounce');
+  if (!el) return;
+  el.textContent = '';
+  requestAnimationFrame(() => { el.textContent = msg; });
+}
+
+function openModal(book) {
+  document.getElementById('modalTitle').textContent  = book.t;
+  document.getElementById('modalAuthor').textContent = book.a;
+  document.getElementById('modalDesc').textContent   = book.d;
+  document.getElementById('modalTags').innerHTML = (book.g||[]).map(g=>`<span class="tag">${g}</span>`).join('');
+
+  const wrap = document.getElementById('modalCoverWrap');
+  loadModalCover(wrap, book.isbn, book.t, book.a);
+
+  document.getElementById('catalogLinks').innerHTML = `
+    <a class="catalog-btn" href="${catalogUrl('roseland',book.t)}" target="_blank" rel="noopener">Roseland ${EXT}</a>
+    <a class="catalog-btn" href="${catalogUrl('fairfield',book.t)}" target="_blank" rel="noopener">Fairfield ${EXT}</a>
+    <a class="catalog-btn" href="${catalogUrl('caldwell',book.t)}" target="_blank" rel="noopener">Caldwell ${EXT}</a>
+    <a class="catalog-btn" href="${catalogUrl('sora',book.t)}" target="_blank" rel="noopener">Sora / OverDrive ${EXT}</a>`;
+
+  const overlay = document.getElementById('modalOverlay');
+  overlay.removeAttribute('aria-hidden');
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('modalClose').focus();
+  document.addEventListener('keydown', trapFocus);
+  announce(`${book.t} by ${book.a}`);
+}
+
+function closeModal() {
+  const overlay = document.getElementById('modalOverlay');
+  overlay.classList.remove('open');
+  overlay.setAttribute('aria-hidden','true');
+  document.body.style.overflow = '';
+  document.removeEventListener('keydown', trapFocus);
+}
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
