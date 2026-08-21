@@ -202,7 +202,7 @@ body {
 .scroll-wrap::after {
   content: ''; position: absolute; top: 0; right: 0;
   width: 80px; height: 100%;
-  background: linear-gradient(to left, #111111 0%, transparent 100%);
+  background: linear-gradient(to left, var(--bg) 0%, transparent 100%);
   pointer-events: none; z-index: 2;
   transition: opacity .2s;
 }
@@ -503,7 +503,7 @@ body {
 <div id="srAnnounce" aria-live="polite" aria-atomic="true" class="sr-only"></div>
 
 <!-- ============================================================ MODAL -->
-<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-hidden="true">
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
   <div class="modal-panel" id="modalPanel">
     <button class="modal-close" id="modalClose" aria-label="Close">&#x2715;</button>
     <div class="modal-body">
@@ -528,7 +528,7 @@ body {
 // shorthand: t=title, a=author, isbn, g=genres[], d=description
 const BOOKS = {
   grade9: {
-    label:"Incoming 9th Grade", downloadUrl:"https://docs.google.com/document/d/1FqlPOv7N4TTA2d1tOC7JAhPaOjAp-RROmbGN6y_-1iM/edit?usp=sharing",
+    label:"Incoming 9th Grade",
     pdfUrl:"summer_reading_2026_grade9.pdf",
     fiction:[
       {t:"Divine Rivals",a:"Rebecca Ross",isbn:"9781250857439",g:["Fantasy","Steampunk"],d:"When two young rival journalists find love through a magical connection, they must face the depths of hell—in a war among gods—to seal their fate forever."},
@@ -602,7 +602,7 @@ const BOOKS = {
       {t:"When Nobody Was Watching",a:"Carli Lloyd",isbn:"9780544814622",g:["Memoir","Sports"],d:"In 2015, the U.S .Women’s National Soccer Team won its first FIFA championship in sixteen years, culminating in an epic final game that electrified soccer fans around the world. It featured a gutsy, brilliant performance by team captain and midfielder Carli Lloyd, who made history that day, scoring a hat trick—three goals in one game—during the first sixteen minutes. But there was a time when Carli almost quit the sport. In 2003 she was struggling, her soccer career at a crossroads. Then she found a trusted trainer, James Galanis, who saw in Carli a player with raw talent, skill, and a great dedication to the game. What Carli lacked were fitness, mental toughness, and character. Together they set to work, training day and night, fighting, grinding it out. No one worked harder than Carli. And no one believed in her more than James. Despite all the naysayers, the times she was benched, moments when her self-confidence took a nosedive, she succeeded in becoming one of the best players in the world."}]
   },
   grade10: {
-    label:"Incoming 10th Grade", downloadUrl:null, pdfUrl:"summer_reading_2026_grade10.pdf",
+    label:"Incoming 10th Grade", pdfUrl:"summer_reading_2026_grade10.pdf",
     fiction:[
       {t:"What the River Knows",a:"Isabel Ibañez",isbn:"9781250803375",g:["Historical Fantasy","Adventure"],d:"Inez Olivera, of Bolivian and Argentine descent, sets off for 1880s Cairo to learn what happened to her globe-trotting parents—and finds, in a mysterious guardian-archaeologist and a strange inherited ring, more than she bargained for."},
       {t:"Where the Library Hides",a:"Isabel Ibañez",isbn:"9781250822994",g:["Historical Fantasy","Adventure","Romance"],d:"After the heart-stopping end of What the River Knows, Inez fights to stay in Egypt and find answers—accepting an enigmatic marriage proposal to secure her independence, even as new betrayals threaten to undo everything."},
@@ -663,7 +663,7 @@ const BOOKS = {
     ]
   },
   grade11: {
-    label:"Incoming 11th Grade", downloadUrl:"https://docs.google.com/document/d/1p_jZZga_MxfgUqjCZv2z15W8JFHe_XdyMEAyeB77rXE/edit?usp=sharing", pdfUrl:"summer_reading_2026_grade11.pdf",
+    label:"Incoming 11th Grade", pdfUrl:"summer_reading_2026_grade11.pdf",
     fiction:[
       {t:"American Dirt",a:"Jeanine Cummins",isbn:"9781250209764",g:["Realistic Fiction","Immigration","Mexico"],d:"When a cartel massacre destroys her life in Acapulco, Lydia Pérez and her eight-year-old son flee north on la bestia—the freight trains—toward the only border the cartel cannot cross."},
       {t:"American Street",a:"Ibi Zoboi",isbn:"9780062473042",g:["Realistic Fiction","Immigration","Haiti"],d:"When Fabiola Toussaint arrives in Detroit from Haiti to find her mother detained by immigration, she must navigate an unfamiliar city, a loud extended family, and a neighborhood where loyalty can cost everything."},
@@ -738,7 +738,7 @@ const BOOKS = {
       {t:"Fans",a:"Larry Olmsted",isbn:"9781616208462",g:["Nonfiction","Sports"],d:"Citing fascinating new studies on sports fandom, Larry Olmsted makes the case that the more you identify with a sports team, the better your social, psychological, and physical health is; the more meaningful your relationships are; and the more connected and happier you are. Fans maintain better cognitive processing as their gray matter ages; they have better language skills; and college students who follow sports have higher GPAs, better graduation rates, and higher incomes after graduating. And there’s more: On a societal level, sports help us heal after tragedies, providing community and hope when we need it most. Fans is the perfect gift for anyone who loves sports or anyone who loves someone who loves sports."}]
   },
   grade12: {
-    label:"Incoming 12th Grade", downloadUrl:"https://docs.google.com/document/d/17q4fyQqNHQAx-E9lTcOJ8J9gTjk2VidVylrQk4VFyHg/edit?usp=sharing", pdfUrl:"summer_reading_2026_grade12.pdf",
+    label:"Incoming 12th Grade", pdfUrl:"summer_reading_2026_grade12.pdf",
     fiction:[
       {t:"First-Year Orientation",a:"Lauren Gibaldi & Eric Smith (eds.)",isbn:"9781536224498",g:["Short Stories","College Life"],d:"Sixteen linked stories—spanning the humorous, the heartfelt, and the ghostly—chronicle the first shaky steps of a range of characters into the terrifying and exhilarating world of college."},
       {t:"Malibu Rising",a:"Taylor Jenkins Reid",isbn:"9781524798673",g:["Historical Fiction","Family"],d:"Four famous siblings throw an epic end-of-summer party that spirals out of control as the secrets and loves that have shaped their family across generations come to light."},
@@ -793,7 +793,6 @@ const BOOKS = {
       {t:"Rise and Grind",a:"Daymond John",isbn:"9780804189958",g:["Nonfiction","Business","Entrepreneurship"],d:"The Shark Tank investor and FUBU founder traces his own rise from obscurity while examining other professionals who achieved their goals through a determined work ethic—and translating those lessons for any career."},
       {t:"The Short and Tragic Life of Robert Peace",a:"Jeff Hobbs",isbn:"9781476731902",g:["Nonfiction","Biography"],d:"A heartfelt, riveting biography of a talented young African American man who escaped the slums of Newark for Yale University—only to find that the distance between those two worlds could not be so easily bridged."},
       {t:"Slow Getting Up",a:"Nate Jackson",isbn:"9780062108029",g:["Memoir","Football","Sports"],d:"An unvarnished, uncensored memoir of everyday life in the NFL—from the practice squads and training camps to the degenerative injuries and poor pensions that define most players' careers, far from the spotlight."},
-      {t:"Stamped from the Beginning",a:"Ibram X. Kendi",isbn:"9781568585987",g:["History","Race","Civil Rights"],d:"Using the lives of five major American intellectuals as guides, Kendi traces the entire history of anti-Black racist ideas in America—and argues they were never born of ignorance, but invented to justify policies already in place."},
       {t:"We Are Not Yet Equal",a:"Carol Anderson & Tonya Bolden",isbn:"9781547600762",g:["Narrative Nonfiction","Civil Rights","History"],d:"A rigorous argument that since the passage of the Thirteenth Amendment, every significant advance made by African Americans toward full democracy has been met with deliberate, systematic rollback."},
       {t:"You Can't Touch My Hair",a:"Phoebe Robinson",isbn:"9780143129202",g:["Essays","Humor","African American Women"],d:"Phoebe Robinson's witty, sharp-elbowed essays cover what it's like to be a Black woman in contemporary America—from the micro-aggressions of daily life to the structural inequities hiding behind them."}
     ,
@@ -841,7 +840,8 @@ function catalogUrl(system, title) {
 const EXT = `<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 8.5L8.5 1.5M8.5 1.5H4.5M8.5 1.5V5.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
 /* ------------------------------------------------------------------ cover loading
-   Image-only approach: no fetch(), no CORS dependencies. Works on file:// or HTTPS.
+   Image-first approach: Open Library and B&N are probed as plain <img> tags (CORS-exempt),
+   with one CORS-clean fetch() to the Google Books API in between. Works on file:// or HTTPS.
    Each cover request tries multiple image URLs in sequence and detects the
    "placeholder/missing" response by checking naturalWidth after onload.        */
 
@@ -868,7 +868,17 @@ function probeImage(url, minWidth) {
 }
 
 // Try multiple sources in order until one returns a real image.
+const COVER_CACHE = new Map();
+
 async function fetchCoverUrl(isbn, large) {
+  const cacheKey = String(isbn) + (large ? ':L' : ':M');
+  if (COVER_CACHE.has(cacheKey)) return COVER_CACHE.get(cacheKey);
+  const pending = resolveCoverUrl(isbn, large);
+  COVER_CACHE.set(cacheKey, pending);
+  return pending;
+}
+
+async function resolveCoverUrl(isbn, large) {
   const olSize    = large ? 'L' : 'M';
   const cleanIsbn = String(isbn).replace(/[^0-9Xx]/g, '');
 
@@ -928,23 +938,28 @@ function initCoverObserver() {
       const book = JSON.parse(card.dataset.book);
       fetchCoverUrl(book.isbn, false).then(url => { if (url) applyCoverToCard(card, url); });
     });
+    document.querySelectorAll('.ap-cover-pending').forEach(fillApCover);
     return;
   }
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
-      const card = entry.target;
-      if (card.dataset.coverDone) return;
-      card.dataset.coverDone = '1';
-      observer.unobserve(card);
-      const book = JSON.parse(card.dataset.book);
+      const el = entry.target;
+      if (el.dataset.coverDone) return;
+      el.dataset.coverDone = '1';
+      observer.unobserve(el);
+      if (el.classList.contains('ap-cover-pending')) {
+        fillApCover(el);
+        return;
+      }
+      const book = JSON.parse(el.dataset.book);
       fetchCoverUrl(book.isbn, false).then(url => {
-        if (url) applyCoverToCard(card, url);
+        if (url) applyCoverToCard(el, url);
       });
     });
   }, { rootMargin: '300px' });
 
-  document.querySelectorAll('.book-card').forEach(c => observer.observe(c));
+  document.querySelectorAll('.book-card, .ap-cover-pending').forEach(c => observer.observe(c));
 }
 
 async function loadModalCover(wrap, isbn, title, author) {
@@ -1003,7 +1018,7 @@ function buildRow(books, label, gradeKey, type) {
 function buildCard(book, gradeKey, type) {
   const attr  = JSON.stringify(book).replace(/"/g,'&quot;');
   const genre = book.g && book.g[0] ? `<span class="card-genre" aria-hidden="true">${book.g[0]}</span>` : '';
-  return `<div class="book-card" role="listitem" tabindex="0"
+  return `<div class="book-card" role="listitem" tabindex="0" aria-haspopup="dialog"
     aria-label="${book.t.replace(/"/g,'&quot;')} by ${book.a.replace(/"/g,'&quot;')}"
     data-book="${attr}" data-grade="${gradeKey}" data-type="${type}">
     ${placeholderHTML(book.t, book.a)}
@@ -1048,12 +1063,12 @@ function apBookItem(b) {
     { label:'Caldwell Library', system:'caldwell' },
     { label:'Sora', system:'sora' },
   ].map(({label, system}) =>
-    `<a class="catalog-link" href="${catalogUrl(system, b.t)}" target="_blank" rel="noopener">
+    `<a class="catalog-btn" href="${catalogUrl(system, b.t)}" target="_blank" rel="noopener">
       ${label}&nbsp;${EXT}
     </a>`
   ).join('');
   return `<div class="ap-book-item">
-    <div class="ap-book-cover" id="${pid}">
+    <div class="ap-book-cover ap-cover-pending" id="${pid}" data-isbn="${b.isbn}">
       <div style="width:100%;height:100%;background:var(--surface2);border-radius:3px"></div>
     </div>
     <div class="ap-book-text">
@@ -1066,16 +1081,12 @@ function apBookItem(b) {
   </div>`;
 }
 
-function loadApCovers() {
-  AP.forEach(course => {
-    [...course.required, ...course.choice].forEach(b => {
-      const wrap = document.getElementById(`ap-${b.isbn}`);
-      if (!wrap) return;
-      fetchCoverUrl(b.isbn, false).then(url => {
-        if (!url) return;
-        wrap.innerHTML = `<img src="${url}" alt="" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:3px" onerror="this.parentElement.innerHTML=''">`;
-      });
-    });
+function fillApCover(wrap) {
+  const isbn = wrap.dataset.isbn;
+  if (!isbn) return;
+  fetchCoverUrl(isbn, false).then(url => {
+    if (!url) return;
+    wrap.innerHTML = `<img src="${url}" alt="" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:3px" onerror="this.parentElement.innerHTML=''">`;
   });
 }
 
@@ -1252,7 +1263,6 @@ function init() {
   document.addEventListener('keydown', e => { if (e.key==='Escape') closeModal(); });
 
   initCoverObserver();
-  loadApCovers();
   initScrollFades();
   initScrollSpy();
   initFilters();
@@ -1287,7 +1297,10 @@ function announce(msg) {
   requestAnimationFrame(() => { el.textContent = msg; });
 }
 
+let lastFocusedEl = null;
+
 function openModal(book) {
+  lastFocusedEl = document.activeElement;
   document.getElementById('modalTitle').textContent  = book.t;
   document.getElementById('modalAuthor').textContent = book.a;
   document.getElementById('modalDesc').textContent   = book.d;
@@ -1301,6 +1314,9 @@ function openModal(book) {
     <a class="catalog-btn" href="${catalogUrl('fairfield',book.t)}" target="_blank" rel="noopener">Fairfield ${EXT}</a>
     <a class="catalog-btn" href="${catalogUrl('caldwell',book.t)}" target="_blank" rel="noopener">Caldwell ${EXT}</a>
     <a class="catalog-btn" href="${catalogUrl('sora',book.t)}" target="_blank" rel="noopener">Sora / OverDrive ${EXT}</a>`;
+
+  const panel = document.getElementById('modalPanel');
+  panel.scrollTop = 0;
 
   const overlay = document.getElementById('modalOverlay');
   overlay.removeAttribute('aria-hidden');
@@ -1317,6 +1333,10 @@ function closeModal() {
   overlay.setAttribute('aria-hidden','true');
   document.body.style.overflow = '';
   document.removeEventListener('keydown', trapFocus);
+  if (lastFocusedEl && document.contains(lastFocusedEl)) {
+    lastFocusedEl.focus({ preventScroll: true });
+  }
+  lastFocusedEl = null;
 }
 
 document.addEventListener('DOMContentLoaded', init);
