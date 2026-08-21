@@ -862,57 +862,167 @@ function probeImage(url, minWidth) {
     img.onload  = () => finish(img.naturalWidth >= (minWidth || 40) ? url : null);
     img.onerror = () => finish(null);
     // Safety timeout so a hung request doesn't block forever
-    setTimeout(() => finish(null), 6000);
+    setTimeout(() => finish(null), 4000);
     img.src = url;
   });
 }
 
 // Try multiple sources in order until one returns a real image.
+// Results persist in localStorage so repeat visits cost no network requests and
+// do not re-spend the shared Google Books quota.
 const COVER_CACHE = new Map();
+const LS_KEY   = 'wehs.covers.v3';
+const TTL_HIT  = 90 * 24 * 3600 * 1000;   // a found cover is stable; keep it 90 days
+const TTL_MISS = 3 * 24 * 3600 * 1000;    // a miss may be transient; retry after 3 days
 
-async function fetchCoverUrl(isbn, large) {
-  const cacheKey = String(isbn) + (large ? ':L' : ':M');
-  if (COVER_CACHE.has(cacheKey)) return COVER_CACHE.get(cacheKey);
-  const pending = resolveCoverUrl(isbn, large);
-  COVER_CACHE.set(cacheKey, pending);
+let DISK = {};
+try { DISK = JSON.parse(localStorage.getItem(LS_KEY) || '{}'); } catch (e) { DISK = {}; }
+let diskDirty = false;
+function flushDisk() {
+  if (!diskDirty) return;
+  diskDirty = false;
+  try { localStorage.setItem(LS_KEY, JSON.stringify(DISK)); } catch (e) { /* quota; ignore */ }
+}
+setInterval(flushDisk, 4000);
+window.addEventListener('pagehide', flushDisk);
+
+// Cap simultaneous lookups. Without this a full page load opens 250+ sockets at
+// once, which starves the browser and triggers rate limiting immediately.
+const MAX_INFLIGHT = 4;
+let inflight = 0;
+const waiting = [];
+function acquire() {
+  if (inflight < MAX_INFLIGHT) { inflight++; return Promise.resolve(); }
+  return new Promise(res => waiting.push(res));
+}
+function release() {
+  inflight--;
+  const next = waiting.shift();
+  if (next) { inflight++; next(); }
+}
+
+async function fetchCoverUrl(isbn, large, meta) {
+  const key = String(isbn) + (large ? ':L' : ':M');
+  if (COVER_CACHE.has(key)) return COVER_CACHE.get(key);
+
+  const rec = DISK[key];
+  if (rec && Date.now() - rec.t < (rec.u ? TTL_HIT : TTL_MISS)) {
+    const val = rec.u || null;
+    COVER_CACHE.set(key, Promise.resolve(val));
+    return val;
+  }
+
+  const pending = (async () => {
+    await acquire();
+    try {
+      const url = await resolveCoverUrl(isbn, large, meta);
+      DISK[key] = { u: url || '', t: Date.now() };
+      diskDirty = true;
+      return url;
+    } finally { release(); }
+  })();
+
+  COVER_CACHE.set(key, pending);
   return pending;
 }
 
-async function resolveCoverUrl(isbn, large) {
-  const olSize    = large ? 'L' : 'M';
+// Source set determined by live audit on the school network (255 titles):
+//   OL direct ISBN        75.7%
+//   OL search by ISBN     84.7%   (catches editions OL holds under a different ISBN)
+//   OL search title+author 84.3%
+//   Apple Books (JSONP)   28.2%   (useful supplement; refuses CORS, so JSONP)
+//   Google Books           0.0%   hard-blocked on this network — removed
+//   Barnes & Noble         0.0%   hotlink protected — removed
+// Union of the retained sources covers ~92% of the list.
+
+// JSONP loader for endpoints that refuse CORS.
+let jsonpSeq = 0;
+function jsonp(base) {
+  return new Promise(resolve => {
+    const cb = '__coverCb' + (jsonpSeq++);
+    let done = false;
+    const el = document.createElement('script');
+    const finish = v => {
+      if (done) return;
+      done = true;
+      try { delete window[cb]; } catch (e) { window[cb] = undefined; }
+      el.remove();
+      resolve(v);
+    };
+    window[cb] = d => finish(d);
+    el.onerror = () => finish(null);
+    setTimeout(() => finish(null), 5000);
+    el.src = base + (base.indexOf('?') >= 0 ? '&' : '?') + 'callback=' + cb;
+    document.head.appendChild(el);
+  });
+}
+
+// Open Library work-level lookups are shared between the card and the modal so
+// each ISBN costs at most one search request per method.
+const OL_SEARCH_CACHE = new Map();
+function olSearch(key, url) {
+  if (OL_SEARCH_CACHE.has(key)) return OL_SEARCH_CACHE.get(key);
+  const p = (async () => {
+    try {
+      const r = await fetch(url);
+      if (!r.ok) return null;
+      const d = await r.json();
+      return (d && d.docs) ? d.docs : null;
+    } catch (e) { return null; }
+  })();
+  OL_SEARCH_CACHE.set(key, p);
+  return p;
+}
+
+const normTitle = t => String(t).toLowerCase().replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim();
+
+async function resolveCoverUrl(isbn, large, meta) {
+  const size      = large ? 'L' : 'M';
   const cleanIsbn = String(isbn).replace(/[^0-9Xx]/g, '');
 
-  // 1) Open Library — CORS-clean, no rate limit, strong for backlist/classics.
-  const ol = `https://covers.openlibrary.org/b/isbn/${cleanIsbn}-${olSize}.jpg?default=false`;
-  const olOk = await probeImage(ol, 50);
-  if (olOk) return olOk;
+  // 1) Direct edition match. One request, no JSON parsing.
+  const direct = await probeImage(
+    `https://covers.openlibrary.org/b/isbn/${cleanIsbn}-${size}.jpg?default=false`, 50);
+  if (direct) return direct;
 
-  // 2) Google Books volumes API — best coverage for recent YA titles.
-  try {
-    const resp = await fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${cleanIsbn}&country=US`);
-    if (resp.ok) {
-      const data  = await resp.json();
-      const links = data && data.items && data.items[0] &&
-                    data.items[0].volumeInfo && data.items[0].volumeInfo.imageLinks;
-      if (links) {
-        let u = links.thumbnail || links.smallThumbnail;
-        if (u) {
-          u = u.replace(/^http:/, 'https:').replace('&edge=curl', '');
-          u = u.replace(/zoom=\d/, large ? 'zoom=3' : 'zoom=2');
-          const gbOk = await probeImage(u, 50);
-          if (gbOk) return gbOk;
+  // 2) Work record by ISBN. Catches works Open Library holds under another edition.
+  const byIsbn = await olSearch('i:' + cleanIsbn,
+    `https://openlibrary.org/search.json?q=${cleanIsbn}&fields=cover_i&limit=1`);
+  if (byIsbn && byIsbn[0] && byIsbn[0].cover_i) {
+    const u = await probeImage(`https://covers.openlibrary.org/b/id/${byIsbn[0].cover_i}-${size}.jpg`, 50);
+    if (u) return u;
+  }
+
+  // 3) Title and author. Guarded against loose matches returning the wrong book.
+  if (meta && meta.t && meta.a) {
+    const author = String(meta.a).split(/[;(]/)[0].replace(/\s*\(ed\.?\)\s*/i, '').trim();
+    const key = 't:' + meta.t + '|' + author;
+    const docs = await olSearch(key,
+      `https://openlibrary.org/search.json?title=${encodeURIComponent(meta.t)}` +
+      `&author=${encodeURIComponent(author)}&fields=title,cover_i&limit=3`);
+    if (docs) {
+      const want = normTitle(meta.t);
+      for (const doc of docs) {
+        if (!doc.cover_i || !doc.title) continue;
+        const got = normTitle(doc.title);
+        if (got === want || got.indexOf(want) >= 0 || want.indexOf(got) >= 0) {
+          const u = await probeImage(`https://covers.openlibrary.org/b/id/${doc.cover_i}-${size}.jpg`, 50);
+          if (u) return u;
+          break;
         }
       }
     }
-  } catch (e) { /* quota/network hiccup — fall through */ }
+  }
 
-  // 3) Barnes & Noble product image CDN. <img> tags are CORS-exempt so this
-  //    works as a hotlink even though the CDN doesn't send CORS headers.
-  //    Pattern: ISBN13_p0_v1_s{w}x{h}.jpg  (192×300 = standard cover ratio)
-  const bnSize = large ? '400x630' : '192x300';
-  const bn = `https://prodimage.images-bn.com/pimages/${cleanIsbn}_p0_v1_s${bnSize}.jpg`;
-  const bnOk = await probeImage(bn, 50);
-  if (bnOk) return bnOk;
+  // 4) Apple Books over JSONP.
+  const ap = await jsonp(`https://itunes.apple.com/lookup?isbn=${cleanIsbn}&entity=ebook`);
+  if (ap && ap.results && ap.results.length) {
+    const art = ap.results[0].artworkUrl100;
+    if (art) {
+      const u = await probeImage(art.replace('100x100bb', large ? '600x600bb' : '400x400bb'), 50);
+      if (u) return u;
+    }
+  }
 
   return null;
 }
@@ -936,7 +1046,7 @@ function initCoverObserver() {
     // Fallback: load all covers immediately
     document.querySelectorAll('.book-card').forEach(card => {
       const book = JSON.parse(card.dataset.book);
-      fetchCoverUrl(book.isbn, false).then(url => { if (url) applyCoverToCard(card, url); });
+      fetchCoverUrl(book.isbn, false, book).then(url => { if (url) applyCoverToCard(card, url); });
     });
     document.querySelectorAll('.ap-cover-pending').forEach(fillApCover);
     return;
@@ -945,16 +1055,23 @@ function initCoverObserver() {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
       const el = entry.target;
-      if (el.dataset.coverDone) return;
-      el.dataset.coverDone = '1';
-      observer.unobserve(el);
+      if (el.dataset.coverBusy || el.dataset.coverDone) return;
+      el.dataset.coverBusy = '1';
       if (el.classList.contains('ap-cover-pending')) {
-        fillApCover(el);
+        fillApCover(el).then(ok => {
+          delete el.dataset.coverBusy;
+          if (ok) { el.dataset.coverDone = '1'; observer.unobserve(el); }
+        });
         return;
       }
       const book = JSON.parse(el.dataset.book);
-      fetchCoverUrl(book.isbn, false).then(url => {
-        if (url) applyCoverToCard(el, url);
+      fetchCoverUrl(book.isbn, false, book).then(url => {
+        delete el.dataset.coverBusy;
+        if (url) {
+          applyCoverToCard(el, url);
+          el.dataset.coverDone = '1';
+          observer.unobserve(el);
+        }
       });
     });
   }, { rootMargin: '300px' });
@@ -967,7 +1084,7 @@ let modalCoverToken = 0;
 async function loadModalCover(wrap, isbn, title, author) {
   const token = ++modalCoverToken;
   wrap.innerHTML = placeholderHTML(title, author);
-  const url = await fetchCoverUrl(isbn, true);
+  const url = await fetchCoverUrl(isbn, true, { t: title, a: author });
   // A newer book was opened while this lookup was in flight; discard the result.
   if (token !== modalCoverToken) return;
   if (!url) return;
@@ -1073,7 +1190,7 @@ function apBookItem(b) {
     </a>`
   ).join('');
   return `<div class="ap-book-item">
-    <div class="ap-book-cover ap-cover-pending" id="${pid}" data-isbn="${b.isbn}">
+    <div class="ap-book-cover ap-cover-pending" id="${pid}" data-isbn="${b.isbn}" data-title="${b.t.replace(/"/g,'&quot;')}" data-author="${b.a.replace(/"/g,'&quot;')}">
       <div style="width:100%;height:100%;background:var(--surface2);border-radius:3px"></div>
     </div>
     <div class="ap-book-text">
@@ -1088,10 +1205,11 @@ function apBookItem(b) {
 
 function fillApCover(wrap) {
   const isbn = wrap.dataset.isbn;
-  if (!isbn) return;
-  fetchCoverUrl(isbn, false).then(url => {
-    if (!url) return;
+  if (!isbn) return Promise.resolve(false);
+  return fetchCoverUrl(isbn, false, { t: wrap.dataset.title, a: wrap.dataset.author }).then(url => {
+    if (!url) return false;
     wrap.innerHTML = `<img src="${url}" alt="" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:3px" onerror="this.parentElement.innerHTML=''">`;
+    return true;
   });
 }
 
