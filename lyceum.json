@@ -1,0 +1,13 @@
+{
+  "lyceum": 1,
+  "_note": "Generated for the Lyceum hub's unified search. Section titles are the guide's own headings. 'keywords' is optional and never displayed: it lets an evocative title stay evocative while remaining findable. Leave arrays empty until you have something to add.",
+  "title": "WEHS Summer Reading 2026",
+  "description": "West Essex High School Board of Education approved summer reading lists for grades 9–12 and AP English courses, 2026.",
+  "url": "https://mistertlibrary.github.io/summerreading2026/",
+  "series": "",
+  "course": "",
+  "subjects": [
+    "English Language Arts"
+  ],
+  "sections": []
+}
