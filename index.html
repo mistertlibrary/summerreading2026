@@ -22,6 +22,10 @@ html { scroll-behavior: smooth; }
 /* === Variables === */
 :root {
   --accent:       #C41E3A;
+  /* The accent as TEXT. #C41E3A is a background and border colour on this
+     near-black page; as small text on it, it never clears 3.3:1. The deep
+     red stays where it is drawn as a block; this is the one that is read. */
+  --accent-ink:   #E76278;
   --accent-mid:   #a01830;
   --accent-dim:   rgba(196, 30, 58, 0.13);
   --serif:        'Cormorant Garamond', Georgia, serif;
@@ -42,7 +46,7 @@ html { scroll-behavior: smooth; }
   --border:      #3a3a3a;
   --text:        #f8f6f2;
   --text-muted:  #c4bdb4;
-  --text-dim:    #5a5550;
+  --text-dim:    #938D86;
   --nav-bg:      rgba(17,17,17,.96);
   --modal-bg:    #1e1e1e;
   --shadow:      0 20px 48px rgba(0,0,0,.75);
@@ -164,7 +168,7 @@ body {
   min-height: 44px;
 }
 .nav-tab:hover { color: var(--text); }
-.nav-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+.nav-tab.active { color: var(--accent-ink); border-bottom-color: var(--accent-ink); }
 
 /* === Grade section === */
 .grade-section { padding: 56px 0 8px; }
@@ -187,7 +191,7 @@ body {
   transition: color .15s, border-color .15s, background-color .15s;
   min-height: 34px;
 }
-.grade-pdf-link:hover { color: var(--accent); border-color: rgba(196,30,58,.4); background: var(--accent-dim); }
+.grade-pdf-link:hover { color: var(--accent-ink); border-color: rgba(196,30,58,.4); background: var(--accent-dim); }
 
 /* === Book row === */
 .book-row { margin-bottom: 40px; position: relative; }
@@ -336,7 +340,7 @@ body {
   padding: 10px 14px; text-decoration: none;
   transition: all .15s; white-space: nowrap; min-height: 40px;
 }
-.catalog-btn:hover { background: var(--accent-dim); border-color: rgba(196,30,58,.4); color: var(--accent); }
+.catalog-btn:hover { background: var(--accent-dim); border-color: rgba(196,30,58,.4); color: var(--accent-ink); }
 .modal-close {
   position: absolute; top: 8px; right: 8px;
   width: 44px; height: 44px;
@@ -369,11 +373,11 @@ body {
 .ap-card-note { font-size: 15px; color: var(--text-muted); line-height: 1.75; margin-bottom: 16px; }
 .ap-ext-link {
   display: inline-flex; align-items: center; gap: 6px;
-  font-size: 13px; font-weight: 500; color: var(--accent);
+  font-size: 13px; font-weight: 500; color: var(--accent-ink);
   text-decoration: none; border-bottom: 1px solid transparent;
   transition: border-color .18s;
 }
-.ap-ext-link:hover { border-bottom-color: var(--accent); }
+.ap-ext-link:hover { border-bottom-color: var(--accent-ink); }
 .ap-book-group { margin-top: 18px; }
 .ap-group-label {
   font-size: 10px; font-weight: 600; letter-spacing: .16em;
@@ -395,7 +399,7 @@ body {
 .ap-book-desc { font-size: 13px; color: var(--text-muted); line-height: 1.75; }
 .ap-book-badge {
   font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
-  color: var(--accent); background: var(--accent-dim);
+  color: var(--accent-ink); background: var(--accent-dim);
   padding: 2px 8px; border-radius: 3px; margin-top: 4px; display: inline-block;
 }
 
@@ -430,7 +434,7 @@ body {
   transition: color .15s, border-color .15s, background-color .15s;
   min-height: 38px;
 }
-.grade-random-btn:hover { color: var(--accent); border-color: rgba(196,30,58,.4); background: var(--accent-dim); }
+.grade-random-btn:hover { color: var(--accent-ink); border-color: rgba(196,30,58,.4); background: var(--accent-dim); }
 .grade-random-btn:active { transform: scale(.96); }
 .grade-random-btn.rolling { animation: roll .35s ease; }
 @keyframes roll {
